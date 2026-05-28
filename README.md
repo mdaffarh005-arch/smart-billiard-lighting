@@ -1,8 +1,9 @@
 # smart-billiard-lighting
 
 ## Anggota Kelompok:
-1. M. Daffa Raditya H. (5024221063) - (Done Commit)
-2. Harudin (5024221041)
-3. Abdi Dzil Ikram (5024221062)
-4. Gandhi Wibowo (5024221031)
-5. Muhammad Rafie (5024221025)
+1. M. Daffa Raditya H. (2124600004) - (Done Commit)
+2. Moch Harudin Ali (2124600008)
+3. Muhammad Abdi Muhyi Umam (2124600023)
+4. Imam Syaifudin (2124600026)
+5. Gandhi Husein Albana (2124600026)
+6. Muhammad Rafie Febriansyah (2124600011)
