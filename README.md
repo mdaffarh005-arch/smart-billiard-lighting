@@ -5,15 +5,12 @@
 ---
 
 ## 📖 Deskripsi Proyek
-Smart Billiard Lighting adalah sistem pencahayaan otomatis untuk meja biliar yang dikendalikan menggunakan mikrokontroler dan sensor. Proyek ini bertujuan untuk meningkatkan pengalaman bermain biliar dengan pencahayaan adaptif sesuai kondisi permainan.
+
 
 ---
 
 ## 🎯 Tujuan Proyek
-- Meningkatkan visibilitas bola dan meja biliar dengan pencahayaan cerdas.
-- Mengoptimalkan penggunaan energi dengan sistem otomatis.
-- Memberikan pengalaman bermain yang lebih modern dan interaktif.
-- Menjadi proyek pembelajaran integrasi hardware dan software IoT.
+
 
 ---
 
