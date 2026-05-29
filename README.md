@@ -31,13 +31,8 @@ Smart Billiard Lighting adalah sistem pencahayaan otomatis untuk meja biliar yan
 
 ## ⚙️ Komponen Hardware
 - Arduino Mega 2560 / ESP32
-- Sensor Hall Effect
-- Sensor DHT11 (suhu & kelembaban)
-- LED Strip / Lampu RGB
-- Power Supply
+- Relay
 - Kabel & PCB
-- Motor Servo (opsional untuk mekanisme tambahan)
-
 ---
 
 ## 🖼️ Visualisasi Sistem
