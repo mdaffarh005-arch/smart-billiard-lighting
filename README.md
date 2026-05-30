@@ -1,12 +1,12 @@
 # 🎱 Smart Billiard Lighting
 
-Proyek ini adalah sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi dengan aplikasi billing kasir untuk memutus arus listrik lampu secara real-time saat durasi sewa main habis.
+Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi dengan aplikasi billing kasir untuk memutus arus listrik lampu secara real-time saat durasi sewa main habis.
 
-## 🎯 Tujuan Proyek
+## 🎯 Tujuan
 1. **Pencegahan Fraud:** Menghilangkan kecurangan oknum penjaga kasir yang menyewakan meja billiard tanpa mencatatnya di sistem keuangan.
 2. **Efisiensi Energi:** Menghentikan pemborosan listrik dengan mematikan lampu meja secara otomatis seketika setelah durasi main selesai atau saat meja kosong.
 
-## 👥 Anggota Kelompok & Jobdesk
+## 👥 Anggota Kelompok
 
 | No | Nama Lengkap | NIM | Peran Utama | Username GitHub |
 |----|--------------|-----|-------------|-----------------|
@@ -17,16 +17,16 @@ Proyek ini adalah sistem pengaturan lampu meja billiard otomatis berbasis IoT ya
 | 5  | Muhammad Abdi Muhyi Umam | 2124600023 | UI/UX Designer | @veno1d6 |
 | 6  | Gandhi Husein Albana | 2124600026 | Software Engineer | @gandhialbana |
 
-## 📊 Papan Status Tugas (Task Board)
+## 📊 To Do List
 
-### 🔴 To Do List (Rencana Tugas)
-- [ ] Pengujian integrasi penuh antara web server kasir dan hardware relay.
-- [ ] Pembuatan casing box 3D printing untuk mikrokontroler.
+### 🟡 On Progress
+- [ ] **Project Manager:** Monitoring linimasa kerja tim, koordinasi integrasi sistem hardware-software, dan manajemen berkas laporan proyek.
+- [ ] **Software (Firmware):** Pengodean logika mikrokontroler untuk mengontrol pemutusan arus relay lampu billiard.
+- [ ] **3D Design:** Pemodelan objek 3D casing box pelindung komponen mikrokontroler dan rangkaian relay agar aman.
+- [ ] **Hardware:** Perancangan skema kelistrikan, jalur PCB di KiCad, serta wiring fisik antara mikrokontroler utama dan modul relay.
+- [ ] **UI/UX:** Pembuatan draf desain antarmuka (interface) dashboard aplikasi billing kasir berbasis web/IoT.
+- [ ] **Software (Database & Web):** Pengembangan arsitektur database billing kasir dan jembatan komunikasi data serial ke hardware.
 
-### 🟡 On Progress (Sedang Dikerjakan)
-- [x] Perancangan skema jalur PCB dan sistem kelistrikan relay (*Imam*).
-- [ ] Pengodean logika protokol pengiriman data serial dari web ke mikrokontroler (*Harudin & Gandhi*).
-
-### 🟢 Done (Selesai)
-- [x] Aktivasi akun GitHub personal dan pembuatan repository kelompok (*Daffa*).
-- [x] Setup koordinasi awal jobdesk dan pengisian commit mandiri tiap anggota (*Semua Anggota*).
+### 🟢 Complete
+- [x] Aktivasi akun GitHub personal oleh seluruh anggota tim.
+- [x] Pembuatan repository kelompok dan pengisian poin minimal 1 commit mandiri oleh setiap individu.
