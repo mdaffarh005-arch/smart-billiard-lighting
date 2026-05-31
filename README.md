@@ -14,7 +14,7 @@ Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi de
 | 2  | Moh Harudin Ali | 2124600008 | Software Engineer | @Harudin313 |
 | 3  | Muhammad Rafie Febriansyah | 2124600011 | 3D Designer | @rafiefebriansyahh |
 | 4  | Imam Syaifudin | 2124600015 | Hardware Engineer | @imam6035 |
-| 5  | Muhammad Abdi Muhyi Umam | 2124600023 | UI/UX Designer | @veno1d6 |
+| 5  | Muhammad Abdi Muhyi Umam | 2124600023 | UI/UX Designer | @abdiemuhyi |
 | 6  | Gandhi Husein Albana | 2124600026 | Software Engineer | @gandhialbana |
 
 ## 📊 To Do List
