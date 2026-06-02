@@ -126,6 +126,9 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 
 🛠 Development Tools
 
+ATmega2560
+Wokwi Simulator
+
 📚 Course Information
 
 * **Project Type:** Embedded System & IoT Project
