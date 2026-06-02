@@ -1,18 +1,19 @@
 # 🎱 Smart Billiard Lighting & Billing System
 
+> Integrasi Billing, Timer, dan Kontrol Lampu dalam Satu Sistem
+
 Sistem otomasi mutakhir yang mengintegrasikan kendali pencahayaan meja biliar, penghitungan waktu presisi (timer), dan manajemen keuangan operasional (billing) dalam satu ekosistem dashboard kasir terpusat. 
 
 Proyek ini dirancang untuk mengatasi celah kebocoran pendapatan (*revenue leakage*) akibat kelalaian manual sekaligus mengoptimalkan konsumsi energi listrik secara real-time.
 
 ---
 
-Smart Billiard Lighting & Billing System
-Sistem otomatis yang mengintegrasikan kontrol lampu meja biliar, timer permainan, dan perhitungan biaya sewa dalam satu dashboard kasir.
+## ❖ Overview
+Smart Billiard Management System memanfaatkan ketangguhan mikrokontroler **ATmega2560** yang dijembatani secara serial menuju aplikasi kasir berbasis web desktop. 
 
-📖 Overview
+Sistem bekerja secara *hardware-interlocking*, di mana lampu berdaya besar di atas meja biliar hanya akan teraliri arus listrik jika terdapat sesi reservasi aktif yang terdata pada sistem kasir[cite: 265, 278]. [cite_start]Langkah ini memangkas *human dependency* dan mengeliminasi penggunaan ruang meja tanpa sisa catatan keuangan[cite: 247, 470].
 
-Smart Billiard Management System merupakan sistem terintegrasi yang menghubungkan aplikasi kasir dengan mikrokontroler ATmega2560 untuk mengelola operasional meja biliar secara otomatis.
-
+---
 Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, serta pengendalian lampu meja secara otomatis maupun manual melalui satu dashboard terpusat.
 
 🎯 Objectives
