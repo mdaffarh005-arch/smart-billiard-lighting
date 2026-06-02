@@ -46,7 +46,7 @@ Operator dapat memilih mode kontrol manual maupun otomatis.
 
 📊 Monitoring Dashboard
 
-Monitoring status meja, timer, dan biaya melalui satu antarmuka.
+Menampilkan status meja, durasi bermain, dan total biaya dalam satu tampilan.
 
 ```mermaid
 flowchart TD
