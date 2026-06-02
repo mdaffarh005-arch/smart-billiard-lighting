@@ -6,9 +6,9 @@ Sistem cerdas untuk mengontrol lampu meja billiard secara otomatis berdasarkan s
 
 📖 Overview
 
-Smart Billiard Lighting adalah sistem otomatisasi lampu meja biliar yang terintegrasi dengan aplikasi billing kasir. Lampu meja hanya aktif saat sesi permainan berlangsung dan akan mati secara otomatis ketika waktu sewa berakhir.
+Smart Billiard Management System merupakan sistem terintegrasi yang menghubungkan aplikasi kasir dengan mikrokontroler ATmega2560 untuk mengelola operasional meja biliar secara otomatis.
 
-Proyek ini dikembangkan untuk meningkatkan efisiensi energi, meminimalkan human error, dan mendukung pengelolaan operasional arena biliar yang lebih modern.
+Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, serta pengendalian lampu meja secara otomatis maupun manual melalui satu dashboard terpusat.
 
 🎯 Objectives
 - Mengurangi pemborosan energi listrik.
