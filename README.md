@@ -115,8 +115,8 @@ Main Workflow
 * **[x]Initial system planning**
 * **[x]Mind map & root cause analysis**
 * **[x]Team collaboration setup**
-* **[x]Dashboard development
-* **[x]Automatic billing calculation
+* **[x]Dashboard development**
+* **[x]Automatic billing calculation**
   
 🌍 SDGs Impact
 
