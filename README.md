@@ -101,9 +101,7 @@ Main Workflow
 
 ### 🟡 On Progress
 
-- [ ] Dashboard development
 - [ ] Timer system implementation
-- [ ] Automatic billing calculation
 - [ ] Relay control integration
 - [ ] Hardware assembly
 - [ ] PCB design
@@ -117,7 +115,8 @@ Main Workflow
 * **[x]Initial system planning**
 * **[x]Mind map & root cause analysis**
 * **[x]Team collaboration setup**
-
+* **[x]Dashboard development
+* **[x]Automatic billing calculation
 🌍 SDGs Impact
 
 SDG 7 – Affordable and Clean Energy
