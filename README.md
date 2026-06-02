@@ -42,6 +42,28 @@ Operator dapat memilih mode kontrol manual maupun otomatis.
 
 Monitoring status meja, timer, dan biaya melalui satu antarmuka.
 
+```mermaid
+flowchart TD
+    A[Kasir Dashboard]
+    B[Serial Communication]
+    C[ATmega2560]
+    D[Timer]
+    E[Billing]
+    F[Relay]
+    G[Durasi Bermain]
+    H[Total Biaya]
+    I[Lampu Meja]
+
+    A --> B
+    B --> C
+    C --> D
+    C --> E
+    C --> F
+    D --> G
+    E --> H
+    F --> I
+```
+
 Main Workflow
 * **Kasir memilih meja yang akan digunakan.**
 * **Sistem mengaktifkan timer dan lampu meja.**
