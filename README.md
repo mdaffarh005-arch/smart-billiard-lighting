@@ -42,6 +42,14 @@ Operator dapat memilih mode kontrol manual maupun otomatis.
 
 Monitoring status meja, timer, dan biaya melalui satu antarmuka.
 
+Main Workflow
+* **Kasir memilih meja yang akan digunakan.**
+* **Sistem mengaktifkan timer dan lampu meja.**
+* **Durasi bermain dihitung secara real-time.**
+* **Biaya sewa dihitung otomatis berdasarkan tarif per menit.**
+* **Saat sesi berakhir, lampu dimatikan otomatis.**
+* **Data penggunaan ditampilkan pada dashboard kasir.**
+
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
