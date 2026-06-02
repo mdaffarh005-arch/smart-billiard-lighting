@@ -120,9 +120,9 @@ SDG 7 – Affordable and Clean Energy
 
 Meningkatkan efisiensi penggunaan energi melalui sistem kontrol lampu otomatis.
 
-🟤 SDG 12 — Responsible Consumption and Production
+SDG 12 – Responsible Consumption and Production
 
-Encouraging responsible electricity consumption in recreational facilities.
+Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawab.
 
 📚 Course Information
 
