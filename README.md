@@ -1,4 +1,4 @@
-# 🎱 Smart Billiard Lighting
+# 🎱 Smart Billiard System
 
 Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi dengan aplikasi billing kasir untuk memutus arus listrik lampu secara real-time saat durasi sewa main habis.
 
