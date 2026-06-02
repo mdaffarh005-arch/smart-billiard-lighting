@@ -22,7 +22,7 @@ Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi 
 * **Mengurangi human error dalam operasional arena biliar.**
 * **Meningkatkan efisiensi pengelolaan meja dan transaksi kasir.**
 
-✨ Key Features
+✨ Features
 ⏱ Real-Time Timer
 
 Menampilkan durasi bermain setiap meja secara real-time.
