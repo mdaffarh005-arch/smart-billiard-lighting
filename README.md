@@ -30,7 +30,7 @@ Menampilkan durasi bermain setiap meja secara real-time.
 
 💰 Flexible Pricing
 
-Harga per menit dapat diatur sesuai kebutuhan operasional.
+Harga per jam dapat diatur sesuai kebutuhan operasional.
 
 🧮 Automatic Billing
 
