@@ -128,7 +128,8 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 
 * **ATmega2560**
 * **Wokwi Simulator**
-VS Code
+* **ATmega2560**
+* **VS Code**
 GitHub
 KiCad
 Figma
