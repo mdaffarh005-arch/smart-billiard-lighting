@@ -22,9 +22,9 @@ Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, se
 
 Menampilkan durasi bermain setiap meja secara real-time.
 
-🛡 Anti-Fraud System
+💰 Flexible Pricing
 
-Mengurangi potensi penggunaan meja tanpa pencatatan transaksi.
+Harga per menit dapat diatur sesuai kebutuhan operasional.
 
 🔌 Relay-Based Control
 
