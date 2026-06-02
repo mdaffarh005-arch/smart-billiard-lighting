@@ -34,6 +34,10 @@ Total biaya dihitung otomatis berdasarkan durasi penggunaan meja.
 
 Lampu meja menyala dan mati mengikuti status penggunaan meja.
 
+🎛 Manual & Automatic Mode
+
+Operator dapat memilih mode kontrol manual maupun otomatis.
+
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
