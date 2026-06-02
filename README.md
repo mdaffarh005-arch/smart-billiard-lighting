@@ -23,6 +23,7 @@ Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi 
 * **Meningkatkan efisiensi pengelolaan meja dan transaksi kasir.**
 
 ✨ Features
+
 ⏱ Real-Time Timer
 
 Menampilkan durasi bermain setiap meja secara real-time.
