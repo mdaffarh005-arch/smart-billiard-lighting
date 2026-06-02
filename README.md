@@ -8,8 +8,9 @@ Proyek ini dirancang untuk mengatasi celah kebocoran pendapatan (*revenue leakag
 
 ---
 
-## ❖ Overview
-Smart Billiard Management System memanfaatkan ketangguhan mikrokontroler **ATmega2560** yang dijembatani secara serial menuju aplikasi kasir berbasis web desktop. 
+## Overview
+
+Smart Billiard Lighting & Billing System merupakan sistem berbasis ATmega2560 yang mengintegrasikan kontrol lampu meja, pencatatan durasi bermain, dan perhitungan biaya sewa secara otomatis melalui dashboard kasir.
 
 Sistem bekerja secara *hardware-interlocking*, di mana lampu berdaya besar di atas meja biliar hanya akan teraliri arus listrik jika terdapat sesi reservasi aktif yang terdata pada sistem kasir[cite: 265, 278]. [cite_start]Langkah ini memangkas *human dependency* dan mengeliminasi penggunaan ruang meja tanpa sisa catatan keuangan[cite: 247, 470].
 
