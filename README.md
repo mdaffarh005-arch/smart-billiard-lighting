@@ -138,7 +138,6 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 📚 Course Information
 
 * **Course: Microcontroller AVR**
-* **Project Type: Embedded System & IoT Project**s
-* **Development Tools:** Wokwi, VS Code, GitHub, KiCad, Figma
+* **Project Type: Embedded System & IoT Project**
+* **Repository: Smart Billiard Lighting & Billing System**
 
-Smart Billiard Management System — Simplifying Operations Through Smart Automation.
