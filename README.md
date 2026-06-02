@@ -1,5 +1,10 @@
 # 🎱 Smart Billiard Lighting & Billing System
-> *Fusing Classic Recreational Elegance with Modern IoT Automation.*
+
+[cite_start]Sistem otomasi mutakhir yang mengintegrasikan kendali pencahayaan meja biliar, penghitungan waktu presisi (timer), dan manajemen keuangan operasional (billing) dalam satu ekosistem dashboard kasir terpusat[cite: 45]. 
+
+[cite_start]Proyek ini dirancang untuk mengatasi celah kebocoran pendapatan (*revenue leakage*) akibat kelalaian manual sekaligus mengoptimalkan konsumsi energi listrik secara real-time[cite: 45, 52].
+
+---
 
 Smart Billiard Lighting & Billing System
 Sistem otomatis yang mengintegrasikan kontrol lampu meja biliar, timer permainan, dan perhitungan biaya sewa dalam satu dashboard kasir.
