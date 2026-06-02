@@ -1,7 +1,7 @@
 🎱 Smart Billiard Lighting
 Integrasi Billing, Efisiensi Energi
 
-🚀 Automated Billiard Lighting Control with IoT Integration
+ Automated Billiard Lighting Control with IoT Integration
 Sistem cerdas untuk mengontrol lampu meja billiard secara otomatis berdasarkan status billing kasir.
 
 📖 Overview
@@ -16,9 +16,11 @@ Proyek ini dikembangkan untuk meningkatkan efisiensi energi, meminimalkan human 
 * **Sistem Kendali Relay Aman:** Integrasi mikrokontroler dengan perlindungan casing box yang terisolasi dari risiko malafungsi arus pendek.
 * **Dashboard Monitoring:** Tampilan antarmuka visual (GUI) kasir yang memantau status aktif/nonaktif setiap meja biliar secara terpusat.
 
-## 🎯 Tujuan
-1. **Pencegahan Fraud:** Menghilangkan kecurangan oknum penjaga kasir yang menyewakan meja billiard tanpa mencatatnya di sistem keuangan.
-2. **Efisiensi Energi:** Menghentikan pemborosan listrik dengan mematikan lampu meja secara otomatis seketika setelah durasi main selesai atau saat meja kosong.
+🎯 Objectives
+- Mengurangi pemborosan energi listrik.
+- Mengotomatiskan kontrol lampu meja biliar.
+- Mengintegrasikan sistem billing dengan perangkat keras.
+- Meminimalkan risiko human error dalam operasional.
 
 ## 👥 Tim Pengembang & Kontributor
 
