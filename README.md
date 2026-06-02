@@ -48,7 +48,7 @@ Mendukung pengoperasian secara otomatis maupun manual.
 
 Menampilkan status meja, durasi bermain, dan total biaya dalam satu tampilan.
 
-Income Automatic Monitoring
+💲Income Automatic Monitoring
 
 Dapat menghitung otomatis total pendapatan yang didapatkan.
 
