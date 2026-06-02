@@ -137,7 +137,7 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 
 📚 Course Information
 
-* **Project Type:** Embedded System & IoT Project
+* **Course: Microcontroller AVR**
 * **Microcontroller:** ATmega2560
 * **Development Tools:** Wokwi, VS Code, GitHub, KiCad, Figma
 
