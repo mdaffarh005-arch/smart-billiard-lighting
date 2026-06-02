@@ -75,7 +75,7 @@ Main Workflow
 * **Sistem mengaktifkan timer dan lampu meja.**
 * **Kasir mengatur tarif per menit.**
 * **Durasi bermain dihitung secara real-time.**
-* **Biaya sewa dihitung otomatis berdasarkan tarif per menit.**
+* **Sistem menghitung biaya berdasarkan durasi bermain.**
 * **Saat sesi berakhir, lampu dimatikan otomatis.**
 * **Data penggunaan ditampilkan pada dashboard kasir.**
 
