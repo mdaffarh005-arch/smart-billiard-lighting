@@ -119,4 +119,4 @@ Encouraging responsible electricity consumption in recreational facilities.
 * **Microcontroller:** ATmega2560
 * **Development Tools:** Wokwi, VS Code, GitHub, KiCad, Figma
 
-Smart Billiard Lighting — Turning Manual Operations into Smart Automation.
+Smart Billiard Management System — Simplifying Operations Through Smart Automation.
