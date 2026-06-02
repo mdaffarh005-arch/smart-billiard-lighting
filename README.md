@@ -33,7 +33,6 @@ ATmega2560 mengendalikan relay untuk menghubungkan atau memutus daya lampu.
 
 Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 
-
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
@@ -59,10 +58,9 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 - [ ] **Software (Database & Web):** Pengembangan arsitektur database billing kasir dan jembatan komunikasi data serial ke hardware.
 
 ### 🟢 Complete
-- [x]Setup repository & Git workflow
 
+- [x]Repository setup
+- [x]Git workflow configuration
 - [x]Initial system design
-
-- [x]Basic relay control implementation
-
 - [x]Team collaboration setup
+- [x]Basic relay control implementation
