@@ -50,10 +50,10 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 ## 📊 To Do List
 
 ### 🟡 On Progress
-- [ ] **Project Manager:** Monitoring linimasa kerja tim, koordinasi integrasi sistem hardware-software, dan manajemen berkas laporan proyek.
+
 - [ ] Repository setup
 - [ ] Git workflow configuration
-Initial system design
+- [ ] Initial system design
 - [ ] Serial communication testing
 - [ ] Hardware assembly
 
