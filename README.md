@@ -24,9 +24,10 @@ Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk menga
 | **2** | **Moh Harudin Ali** | 2124600008 | **Software Engineer (Firmware)**<br>• Pengodean logika kontrol pemutusan relay | [@Harudin31](https://github.com/Harudin31) | 🟢 Done Commit |
 | **3** | **Achmad Rafie Febriansyah** | 2124600011 | **3D Designer**<br>• Pemodelan objek 3D casing box komponen | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) | 🟢 Done Commit |
 | **4** | **Imam Syaifudin** | 2124600015 | **Hardware Engineer**<br>• Perancangan skema PCB KiCad & wiring fisik | [@imam603](https://github.com/imam603) | 🟢 Done Commit |
-| 5  | Muhammad Abdi Muhyi Umam   | 2124600023 | UI/UX Designer    | [@abdiemuhyi](https://github.com/abdiemuhyi) |
-| 6  | Gandhi Husein Albana       | 2124600026 | Software Engineer | [@gandhialbana](https://github.com/gandhialbana-art) |
+| **5** | **Muhammad Abdi Muhyi Umam** | 2124600023 | **UI/UX Designer**<br>• Perancangan interface dashboard web kasir | [@abdiemuhyi](https://github.com/abdiemuhyi) | 🟢 Done Commit |
+| **6** | **Gandhi Husein Albana** | 2124600026 | **Software Engineer (Web & DB)**<br>• Pengembangan database & komunikasi serial | [@gandhialbana-art](https://github.com/gandhialbana-art) | 🟢 Done Commit |
 
+---
 
 
 ## 📊 To Do List
