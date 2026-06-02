@@ -2,9 +2,7 @@
 
 > Integrasi Billing, Timer, dan Kontrol Lampu dalam Satu Sistem
 
-Sistem otomasi mutakhir yang mengintegrasikan kendali pencahayaan meja biliar, penghitungan waktu presisi (timer), dan manajemen keuangan operasional (billing) dalam satu ekosistem dashboard kasir terpusat. 
-
-Proyek ini dirancang untuk mengatasi celah kebocoran pendapatan (*revenue leakage*) akibat kelalaian manual sekaligus mengoptimalkan konsumsi energi listrik secara real-time.
+Sistem berbasis ATmega2560 yang mengintegrasikan kontrol lampu meja biliar, timer permainan, dan perhitungan biaya sewa dalam satu dashboard kasir. Proyek ini bertujuan meningkatkan efisiensi operasional, mengurangi human error, dan meminimalkan pemborosan energi listrik.
 
 ---
 
