@@ -138,7 +138,7 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 📚 Course Information
 
 * **Course: Microcontroller AVR**
-* **Microcontroller:** ATmega2560
+* **Project Type: Embedded System & IoT Project**s
 * **Development Tools:** Wokwi, VS Code, GitHub, KiCad, Figma
 
 Smart Billiard Management System — Simplifying Operations Through Smart Automation.
