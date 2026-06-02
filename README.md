@@ -13,7 +13,7 @@ Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, se
 🎯 Objectives
 * **Mengurangi pemborosan energi listrik pada meja biliar.**
 * **Mengotomatisasi pencatatan waktu bermain pelanggan.**
-* **Mengintegrasikan sistem billing dengan perangkat keras.**
+* **Menghitung biaya sewa secara otomatis berdasarkan durasi permainan.**
 * **Meminimalkan risiko human error dalam operasional.**
 
 ✨ Key Features
