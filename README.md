@@ -4,9 +4,11 @@ Integrasi Billing, Efisiensi Energi
 🚀 Automated Billiard Lighting Control with IoT Integration
 Sistem cerdas untuk mengontrol lampu meja billiard secara otomatis berdasarkan status billing kasir.
 
-## 📝 Ringkasan Proyek
+📖 Overview
 
-Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk mengatasi kendala manajemen pada bisnis arena olahraga biliar. Dengan memanfaatkan jembatan komunikasi antara aplikasi software kasir dan modul hardware relay, arus listrik ke lampu meja biliar hanya akan mengalir jika durasi sewa pada billing kasir berstatus aktif.
+Smart Billiard Lighting adalah sistem otomatisasi lampu meja biliar yang terintegrasi dengan aplikasi billing kasir. Lampu meja hanya aktif saat sesi permainan berlangsung dan akan mati secara otomatis ketika waktu sewa berakhir.
+
+Proyek ini dikembangkan untuk meningkatkan efisiensi energi, meminimalkan human error, dan mendukung pengelolaan operasional arena biliar yang lebih modern.
 
 ### 🚀 Fitur Utama
 * **Auto Cut-Off Listrik:** Pemutusan arus listrik lampu meja secara otomatis tepat ketika waktu sewa habis di sistem kasir.
