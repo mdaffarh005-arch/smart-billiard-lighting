@@ -107,11 +107,11 @@ Main Workflow
 
 ### 🟢 Complete
 
-[x]Repository setup
-[x]Git workflow configuration
-[x]Initial system design
-[x]Team collaboration setup
-[x]Basic relay control implementation
+**[x]Repository setup**
+**[x]Git workflow configuration**
+**[x]Initial system design**
+**[x]Team collaboration setup**
+**[x]Basic relay control implementation**
 
 🎯 SDGs Impact
 🟡 SDG 7 — Affordable and Clean Energy
