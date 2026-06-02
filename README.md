@@ -64,3 +64,8 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 - [x]Initial system design
 - [x]Team collaboration setup
 - [x]Basic relay control implementation
+
+🎯 SDGs Impact
+🟡 SDG 7 — Affordable and Clean Energy
+
+Improving energy efficiency through automated lighting control.
