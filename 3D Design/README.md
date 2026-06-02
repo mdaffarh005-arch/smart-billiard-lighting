@@ -34,6 +34,14 @@ Berfungsi sebagai rangka penopang seluruh sistem.
 ### Cover Atas
 
 Digunakan untuk melindungi komponen elektronik dari debu dan benturan ringan.
+## Tujuan Desain
+
+Desain dibuat untuk:
+
+- Menyediakan pencahayaan merata pada meja biliar
+- Mempermudah pemasangan perangkat elektronik
+- Meningkatkan estetika meja biliar
+- Memudahkan proses maintenance
 ### Dudukan Lampu
 
 Sebagai tempat pemasangan lampu LED untuk pencahayaan meja biliar.
