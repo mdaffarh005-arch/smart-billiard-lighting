@@ -38,6 +38,24 @@ Berisi source code utama untuk mengontrol sistem pencahayaan meja biliar.
 - **ESP32**: komunikasi serial dengan Arduino Mega untuk integrasi IoT.  
 
 ---
+🚀 Fitur Sistem
+
+✅ Kontrol 4 meja biliar independen
+
+✅ Monitoring OLED real-time
+
+✅ Tombol Start dan Emergency
+
+✅ Komunikasi Serial Mega ↔ ESP32
+
+✅ Integrasi GUI Desktop
+
+✅ Dukungan IoT dan MQTT
+
+✅ Status meja real-time
+
+✅ Update otomatis setiap detik
+---
 
 ## 📌 Catatan
 - File `diagram.json` adalah blueprint rangkaian di Wokwi.  
