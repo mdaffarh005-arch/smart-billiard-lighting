@@ -132,8 +132,8 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 * **VS Code**
 * **GitHub**
 * **KiCad**
-Figma
-Python Tkinter
+* **Figma**
+* **Python Tkinter**
 
 📚 Course Information
 
