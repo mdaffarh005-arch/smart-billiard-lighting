@@ -6,6 +6,12 @@
 
 Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk mengatasi kendala manajemen pada bisnis arena olahraga biliar. Dengan memanfaatkan jembatan komunikasi antara aplikasi software kasir dan modul hardware relay, arus listrik ke lampu meja biliar hanya akan mengalir jika durasi sewa pada billing kasir berstatus aktif.
 
+### 🚀 Fitur Utama
+* **Auto Cut-Off Listrik:** Pemutusan arus listrik lampu meja secara otomatis tepat ketika waktu sewa habis di sistem kasir.
+* **Anti-Fraud Mechanism:** Mengunci celah manipulasi laporan keuangan oleh oknum penjaga meja yang tidak mencatat sewa main pelanggan.
+* **Sistem Kendali Relay Aman:** Integrasi mikrokontroler dengan perlindungan casing box yang terisolasi dari risiko malafungsi arus pendek.
+* **Dashboard Monitoring:** Tampilan antarmuka visual (GUI) kasir yang memantau status aktif/nonaktif setiap meja biliar secara terpusat.
+
 ## 🎯 Tujuan
 1. **Pencegahan Fraud:** Menghilangkan kecurangan oknum penjaga kasir yang menyewakan meja billiard tanpa mencatatnya di sistem keuangan.
 2. **Efisiensi Energi:** Menghentikan pemborosan listrik dengan mematikan lampu meja secara otomatis seketika setelah durasi main selesai atau saat meja kosong.
