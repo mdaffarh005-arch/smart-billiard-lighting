@@ -8,6 +8,7 @@ Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi de
 
 ## 👥 Anggota Kelompok
 
+<<<<<<< HEAD
 | No | Nama Lengkap | NIM | Peran Utama | Username GitHub |
 |----|--------------|-----|-------------|-----------------|
 | 1  | M. Daffa Rizal H. | 2124600004 | Project Manager | @mdaffarh005-arch |
@@ -16,6 +17,17 @@ Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi de
 | 4  | Imam Syaifudin | 2124600015 | Hardware Engineer | @imam6035 |
 | 5  | Muhammad Abdi Muhyi Umam | 2124600023 | UI/UX Designer | @veno1d6 |
 | 6  | Gandhi Husein Albana | 2124600026 | Software Engineer | @gandhialbana |
+=======
+| No | Nama Lengkap               | NIM        | Peran Utama       | Username GitHub |
+|----|----------------------------|------------|-------------------|-----------------|
+| 1  | M. Daffa Rizaldy H.        | 2124600004 | Project Manager   | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) |
+| 2  | Moh Harudin Ali            | 2124600008 | Software Engineer | [@Harudin31](https://github.com/Harudin31) |
+| 3  | Achmad Rafie Febriansyah | 2124600011 | 3D Designer       | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) |
+| 4  | Imam Syaifudin             | 2124600015 | Hardware Engineer | [@imam603](https://github.com/imam603) |
+| 5  | Muhammad Abdi Muhyi Umam   | 2124600023 | UI/UX Designer    | [@abdiemuhyi](https://github.com/abdiemuhyi) |
+| 6  | Gandhi Husein Albana       | 2124600026 | Software Engineer | [@gandhialbana](https://github.com/gandhialbana-art) |
+
+>>>>>>> ddbe41859f883eca28a22fc20a611918a93aa362
 
 ## 📊 To Do List
 
