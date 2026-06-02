@@ -79,3 +79,5 @@ Encouraging responsible electricity consumption in recreational facilities.
 * **Project Type:** Embedded System & IoT Project
 * **Microcontroller:** ATmega2560
 * **Development Tools:** Wokwi, VS Code, GitHub, KiCad, Figma
+
+Smart Billiard Lighting — Turning Manual Operations into Smart Automation.
