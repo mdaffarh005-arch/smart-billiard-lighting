@@ -114,7 +114,8 @@ Main Workflow
 **[x]Mind map & root cause analysis**
 **[x]Team collaboration setup**
 
-🎯 SDGs Impact
+🌍 SDGs Impact
+
 🟡 SDG 7 — Affordable and Clean Energy
 
 Improving energy efficiency through automated lighting control.
