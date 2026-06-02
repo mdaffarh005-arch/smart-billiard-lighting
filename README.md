@@ -99,7 +99,7 @@ Main Workflow
 
 - [ ] Dashboard development
 - [ ] Timer system implementation
-- [ ] Initial system design
+- [ ] Automatic billing calculation
 - [ ] Serial communication testing
 - [ ] Hardware assembly
 
