@@ -34,4 +34,7 @@ Berfungsi sebagai rangka penopang seluruh sistem.
 ### Cover Atas
 
 Digunakan untuk melindungi komponen elektronik dari debu dan benturan ringan.
+### Dudukan Lampu
+
+Sebagai tempat pemasangan lampu LED untuk pencahayaan meja biliar.
 
