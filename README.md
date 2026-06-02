@@ -53,9 +53,9 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 - [ ] **Project Manager:** Monitoring linimasa kerja tim, koordinasi integrasi sistem hardware-software, dan manajemen berkas laporan proyek.
 - [ ] **Software (Firmware):** Pengodean logika mikrokontroler untuk mengontrol pemutusan arus relay lampu billiard.
 - [ ] **3D Design:** Pemodelan objek 3D casing box pelindung komponen mikrokontroler dan rangkaian relay agar aman.
-- [ ] **Hardware:** Perancangan skema kelistrikan, jalur PCB di KiCad, serta wiring fisik antara mikrokontroler utama dan modul relay.
-Serial communication testing
-Hardware assembly
+- [ ] **Hardware:** Perancangan skema kelistrikan, jalur PCB di KiCad, serta wiring fisik  antara mikrokontroler utama dan modul relay.
+- [ ] Serial communication testing
+- [ ] Hardware assembly
 
 ### 🟢 Complete
 
