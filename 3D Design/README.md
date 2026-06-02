@@ -26,6 +26,14 @@ Fitur desain:
 - Struktur penutup (cover)
 - Sistem pemasangan di atas meja biliar
 - Desain modular untuk memudahkan perawatan
+## Tujuan Desain
+
+Desain dibuat untuk:
+
+- Menyediakan pencahayaan merata pada meja biliar
+- Mempermudah pemasangan perangkat elektronik
+- Meningkatkan estetika meja biliar
+- Memudahkan proses maintenance
 ## Komponen Utama
 
 ### Frame Utama
