@@ -2,7 +2,9 @@
 
 > **Sistem Pengaturan Lampu Meja Billiard Otomatis Berbasis IoT** > Mengintegrasikan sistem billing kasir dengan kontrol perangkat keras secara real-time untuk efisiensi energi dan pencegahan kecurangan operasional.
 
-Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi dengan aplikasi billing kasir untuk memutus arus listrik lampu secara real-time saat durasi sewa main habis.
+## 📝 Ringkasan Proyek
+
+Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk mengatasi kendala manajemen pada bisnis arena olahraga biliar. Dengan memanfaatkan jembatan komunikasi antara aplikasi software kasir dan modul hardware relay, arus listrik ke lampu meja biliar hanya akan mengalir jika durasi sewa pada billing kasir berstatus aktif.
 
 ## 🎯 Tujuan
 1. **Pencegahan Fraud:** Menghilangkan kecurangan oknum penjaga kasir yang menyewakan meja billiard tanpa mencatatnya di sistem keuangan.
