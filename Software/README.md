@@ -34,7 +34,7 @@ Berisi source code utama untuk mengontrol sistem pencahayaan meja biliar.
 ## 📊 Fungsi Sistem
 - Tombol **hijau**: start sistem.  
 - Tombol **biru**: stop sistem.  
-- **OLED**: menampilkan status sistem (lampu aktif, mode, dll).  
+- **OLED**: menampilkan status sistem meja yang aktif (lampu aktif, mode, dll).  
 - **ESP32**: komunikasi serial dengan Arduino Mega untuk integrasi IoT.  
 
 ---
