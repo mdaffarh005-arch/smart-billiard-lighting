@@ -37,4 +37,11 @@ Digunakan untuk melindungi komponen elektronik dari debu dan benturan ringan.
 ### Dudukan Lampu
 
 Sebagai tempat pemasangan lampu LED untuk pencahayaan meja biliar.
+### Housing Elektronik
 
+Digunakan untuk menempatkan:
+
+- Arduino
+- Power Supply
+- Modul Relay
+- Sensor pendukung
