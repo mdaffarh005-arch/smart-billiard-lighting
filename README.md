@@ -42,7 +42,7 @@ Lampu meja menyala dan mati mengikuti status penggunaan meja.
 
 🎛 Manual & Automatic Mode
 
-Operator dapat memilih mode kontrol manual maupun otomatis.
+Mendukung pengoperasian secara otomatis maupun manual.
 
 📊 Monitoring Dashboard
 
