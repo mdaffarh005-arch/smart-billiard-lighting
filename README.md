@@ -18,9 +18,9 @@ Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, se
 * **Meningkatkan efisiensi pengelolaan meja dan transaksi kasir.**
 
 ✨ Key Features
-⚡ Automatic Power Control
+⏱ Real-Time Timer
 
-Lampu meja menyala dan mati secara otomatis berdasarkan status billing.
+Menampilkan durasi bermain setiap meja secara real-time.
 
 🛡 Anti-Fraud System
 
