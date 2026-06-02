@@ -1,5 +1,5 @@
-🎱 Smart Billiard Lighting
-Otomatisasi Meja, Efisiensi Operasional
+# 🎱 Smart Billiard Lighting & Billing System
+> *Fusing Classic Recreational Elegance with Modern IoT Automation.*
 
 Smart Billiard Lighting & Billing System
 Sistem otomatis yang mengintegrasikan kontrol lampu meja biliar, timer permainan, dan perhitungan biaya sewa dalam satu dashboard kasir.
