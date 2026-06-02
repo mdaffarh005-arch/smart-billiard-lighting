@@ -49,4 +49,13 @@ Digunakan untuk menempatkan:
 
 - Autodesk Inventor
 - Autodesk Fusion 360 (Opsional)
+## Dokumentasi View
 
+Folder ini menyediakan beberapa sudut pandang desain:
+
+- TOP View
+- FRONT View
+- LEFT View
+- RIGHT View
+- TOP Without Box Cover View
+- TOP Right Back Without Box Cover View
