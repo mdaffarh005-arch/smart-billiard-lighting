@@ -51,7 +51,7 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 
 ### 🟡 On Progress
 - [ ] **Project Manager:** Monitoring linimasa kerja tim, koordinasi integrasi sistem hardware-software, dan manajemen berkas laporan proyek.
-- [ ] **Software (Firmware):** Pengodean logika mikrokontroler untuk mengontrol pemutusan arus relay lampu billiard.
+- [ ] Repository setup
 - [ ] Git workflow configuration
 Initial system design
 - [ ] Serial communication testing
