@@ -57,6 +57,19 @@ Berisi source code utama untuk mengontrol sistem pencahayaan meja biliar.
 ✅ Update otomatis setiap detik
 
 ---
+---
+## 🎯 Tujuan Sistem
+
+Smart Billiard Lighting dirancang untuk:
+
+- Mengotomatisasi pengoperasian meja biliar.
+- Memudahkan operator dalam mengontrol lampu meja.
+- Menampilkan status meja secara real-time.
+- Menyediakan fitur Emergency Stop.
+- Mendukung integrasi IoT melalui ESP32.
+- Mengurangi kesalahan operasional manual.
+
+---
 
 ## 📌 Catatan
 - File `diagram.json` adalah blueprint rangkaian di Wokwi.  
