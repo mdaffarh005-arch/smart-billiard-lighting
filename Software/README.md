@@ -38,7 +38,7 @@ Berisi source code utama untuk mengontrol sistem pencahayaan meja biliar.
 - **ESP32**: komunikasi serial dengan Arduino Mega untuk integrasi IoT.  
 
 ---
-🚀 Fitur Sistem
+## 🚀 Fitur Sistem
 
 ✅ Kontrol 4 meja biliar independen
 
@@ -55,6 +55,7 @@ Berisi source code utama untuk mengontrol sistem pencahayaan meja biliar.
 ✅ Status meja real-time
 
 ✅ Update otomatis setiap detik
+
 ---
 
 ## 📌 Catatan
