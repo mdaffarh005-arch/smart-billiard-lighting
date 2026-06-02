@@ -72,8 +72,8 @@ flowchart TD
 
 Main Workflow
 * **Kasir memilih meja yang akan digunakan.**
-* **Sistem mengaktifkan timer dan lampu meja.**
 * **Kasir mengatur tarif per menit.**
+* **Sistem mengaktifkan timer dan lampu meja.**
 * **Durasi bermain dihitung secara real-time.**
 * **Sistem menghitung biaya berdasarkan durasi bermain.**
 * **Saat sesi berakhir, lampu dimatikan otomatis.**
