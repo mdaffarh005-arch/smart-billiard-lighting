@@ -11,10 +11,10 @@ Smart Billiard Management System merupakan sistem terintegrasi yang menghubungka
 Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, serta pengendalian lampu meja secara otomatis maupun manual melalui satu dashboard terpusat.
 
 🎯 Objectives
-- Mengurangi pemborosan energi listrik.
-- Mengotomatiskan kontrol lampu meja biliar.
-- Mengintegrasikan sistem billing dengan perangkat keras.
-- Meminimalkan risiko human error dalam operasional.
+* **Mengurangi pemborosan energi listrik pada meja biliar.**
+* **Mengotomatisasi pencatatan waktu bermain pelanggan.**
+* **Mengintegrasikan sistem billing dengan perangkat keras.**
+* **Meminimalkan risiko human error dalam operasional.**
 
 ✨ Key Features
 ⚡ Automatic Power Control
