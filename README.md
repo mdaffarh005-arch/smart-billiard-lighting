@@ -6,11 +6,11 @@ Sistem berbasis ATmega2560 yang mengintegrasikan kontrol lampu meja biliar, time
 
 ---
 
-## Overview
+📖 Overview
 
-Smart Billiard Lighting & Billing System merupakan sistem berbasis ATmega2560 yang mengintegrasikan kontrol lampu meja, pencatatan durasi bermain, dan perhitungan biaya sewa secara otomatis melalui dashboard kasir.
+Smart Billiard Lighting & Billing System merupakan solusi otomatisasi untuk membantu pengelolaan arena biliar. Sistem menghubungkan aplikasi kasir dengan mikrokontroler ATmega2560 melalui komunikasi serial UART sehingga status penggunaan meja dapat dipantau dan dikendalikan secara real-time.
 
-Sistem bekerja secara *hardware-interlocking*, di mana lampu berdaya besar di atas meja biliar hanya akan teraliri arus listrik jika terdapat sesi reservasi aktif yang terdata pada sistem kasir[cite: 265, 278]. [cite_start]Langkah ini memangkas *human dependency* dan mengeliminasi penggunaan ruang meja tanpa sisa catatan keuangan[cite: 247, 470].
+Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi bermain, menghitung biaya sewa berdasarkan tarif per menit, serta menyimpan riwayat transaksi.
 
 ---
 Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, serta pengendalian lampu meja secara otomatis maupun manual melalui satu dashboard terpusat.
