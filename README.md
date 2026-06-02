@@ -54,8 +54,8 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 - [ ] **Software (Firmware):** Pengodean logika mikrokontroler untuk mengontrol pemutusan arus relay lampu billiard.
 - [ ] **3D Design:** Pemodelan objek 3D casing box pelindung komponen mikrokontroler dan rangkaian relay agar aman.
 - [ ] **Hardware:** Perancangan skema kelistrikan, jalur PCB di KiCad, serta wiring fisik antara mikrokontroler utama dan modul relay.
-- [ ] **UI/UX:** Pembuatan draf desain antarmuka (interface) dashboard aplikasi billing kasir berbasis web/IoT.
-- [ ] **Software (Database & Web):** Pengembangan arsitektur database billing kasir dan jembatan komunikasi data serial ke hardware.
+Serial communication testing
+Hardware assembly
 
 ### 🟢 Complete
 
