@@ -77,7 +77,7 @@ Main Workflow
 * **Durasi bermain dihitung secara real-time.**
 * **Sistem menghitung biaya berdasarkan durasi bermain.**
 * **Saat sesi berakhir, lampu dimatikan otomatis.**
-* **Data penggunaan ditampilkan pada dashboard kasir.**
+* **Riwayat transaksi disimpan pada sistem.**
 
 ## 👥 Tim Pengembang & Kontributor
 
