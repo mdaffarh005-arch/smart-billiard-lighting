@@ -13,7 +13,7 @@ Smart Billiard Lighting & Billing System merupakan solusi otomatisasi untuk memb
 Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi bermain, menghitung biaya sewa berdasarkan tarif per menit, serta menyimpan riwayat transaksi.
 
 ---
-Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, serta pengendalian lampu meja secara otomatis maupun manual melalui satu dashboard terpusat.
+
 
 🎯 Objectives
 * **Mengurangi pemborosan energi listrik pada meja biliar.**
