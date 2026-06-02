@@ -18,9 +18,9 @@ Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk menga
 
 ## 👥 Tim Pengembang & Kontributor
 
-| No | Nama Lengkap               | NIM        | Peran Utama       | Username GitHub |
-|----|----------------------------|------------|-------------------|-----------------|
-| 1  | M. Daffa Rizaldy H.        | 2124600004 | Project Manager   | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) |
+| No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
+| :---: | :--- | :---: | :--- | :--- | :---: |
+| **1** | **M. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
 | 2  | Moh Harudin Ali            | 2124600008 | Software Engineer | [@Harudin31](https://github.com/Harudin31) |
 | 3  | Achmad Rafie Febriansyah | 2124600011 | 3D Designer       | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) |
 | 4  | Imam Syaifudin             | 2124600015 | Hardware Engineer | [@imam603](https://github.com/imam603) |
