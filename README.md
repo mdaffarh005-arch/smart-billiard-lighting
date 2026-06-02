@@ -33,6 +33,21 @@ ATmega2560 mengendalikan relay untuk menghubungkan atau memutus daya lampu.
 
 Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 
+System Architecture
+Kasir Application
+        │
+        ▼
+Serial Communication
+        │
+        ▼
+ATmega2560 Controller
+        │
+        ▼
+Relay Module
+        │
+        ▼
+Billiard Table Lighting
+
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
