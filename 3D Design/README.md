@@ -45,3 +45,8 @@ Digunakan untuk menempatkan:
 - Power Supply
 - Modul Relay
 - Sensor pendukung
+## Software
+
+- Autodesk Inventor
+- Autodesk Fusion 360 (Opsional)
+
