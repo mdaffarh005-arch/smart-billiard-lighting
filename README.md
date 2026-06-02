@@ -14,7 +14,7 @@ Sistem ini mampu melakukan pencatatan durasi bermain, perhitungan biaya sewa, se
 * **Mengurangi pemborosan energi listrik pada meja biliar.**
 * **Mengotomatisasi pencatatan waktu bermain pelanggan.**
 * **Menghitung biaya sewa secara otomatis berdasarkan durasi permainan.**
-* **Meminimalkan risiko human error dalam operasional.**
+* **Mengurangi human error dalam operasional arena biliar.**
 
 ✨ Key Features
 ⚡ Automatic Power Control
