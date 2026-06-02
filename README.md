@@ -10,7 +10,7 @@ Sistem pengaturan lampu meja billiard otomatis berbasis IoT yang terintegrasi de
 
 | No | Nama Lengkap | NIM | Peran Utama | Username GitHub |
 |----|--------------|-----|-------------|-----------------|
-| 1  | M. Daffa Rizaldy H. | 2124600004 | Project Manager | @mdaffarh005-arch |
+| 1  | M. Daffa Rizal H. | 2124600004 | Project Manager | @mdaffarh005-arch |
 | 2  | Moh Harudin Ali | 2124600008 | Software Engineer | @Harudin313 |
 | 3  | Muhammad Rafie Febriansyah | 2124600011 | 3D Designer | @rafiefebriansyahh |
 | 4  | Imam Syaifudin | 2124600015 | Hardware Engineer | @imam6035 |
