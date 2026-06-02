@@ -107,12 +107,12 @@ Main Workflow
 
 ### 🟢 Complete
 
-**[x]Repository setup**
-**[x]Git workflow configuration**
-**[x]Initial system design**
-**[x]Initial system planning**
-**[x]Mind map & root cause analysis**
-**[x]Team collaboration setup**
+* **[x]Repository setup**
+* **[x]Git workflow configuration**
+* **[x]Initial system design**
+* **[x]Initial system planning**
+* **[x]Mind map & root cause analysis**
+* **[x]Team collaboration setup**
 
 🌍 SDGs Impact
 
