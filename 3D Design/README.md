@@ -54,14 +54,6 @@ Digunakan untuk menempatkan:
 - Power Supply
 - Modul Relay
 - Sensor pendukung
-## Tujuan Desain
-
-Desain dibuat untuk:
-
-- Menyediakan pencahayaan merata pada meja biliar
-- Mempermudah pemasangan perangkat elektronik
-- Meningkatkan estetika meja biliar
-- Memudahkan proses maintenance
 ## Software
 
 - Autodesk Inventor
