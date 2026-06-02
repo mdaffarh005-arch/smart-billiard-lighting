@@ -130,6 +130,9 @@ ATmega2560
 Wokwi Simulator
 VS Code
 GitHub
+KiCad
+Figma
+Python Tkinter
 
 📚 Course Information
 
