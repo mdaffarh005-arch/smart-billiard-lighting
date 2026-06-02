@@ -1,6 +1,7 @@
-# 🎱 Smart Billiard System
+🎱 Smart Billiard System
 
-> **Sistem Pengaturan Lampu Meja Billiard Otomatis Berbasis IoT** > Mengintegrasikan sistem billing kasir dengan kontrol perangkat keras secara real-time untuk efisiensi energi dan pencegahan kecurangan operasional.
+🚀 Automated Billiard Lighting Control with IoT Integration
+Sistem cerdas untuk mengontrol lampu meja billiard secara otomatis berdasarkan status billing kasir.
 
 ## 📝 Ringkasan Proyek
 
