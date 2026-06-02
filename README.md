@@ -22,8 +22,8 @@ Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk menga
 | :---: | :--- | :---: | :--- | :--- | :---: |
 | **1** | **M. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
 | **2** | **Moh Harudin Ali** | 2124600008 | **Software Engineer (Firmware)**<br>• Pengodean logika kontrol pemutusan relay | [@Harudin31](https://github.com/Harudin31) | 🟢 Done Commit |
-| 3  | Achmad Rafie Febriansyah | 2124600011 | 3D Designer       | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) |
-| 4  | Imam Syaifudin             | 2124600015 | Hardware Engineer | [@imam603](https://github.com/imam603) |
+| **3** | **Achmad Rafie Febriansyah** | 2124600011 | **3D Designer**<br>• Pemodelan objek 3D casing box komponen | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) | 🟢 Done Commit |
+| **4** | **Imam Syaifudin** | 2124600015 | **Hardware Engineer**<br>• Perancangan skema PCB KiCad & wiring fisik | [@imam603](https://github.com/imam603) | 🟢 Done Commit |
 | 5  | Muhammad Abdi Muhyi Umam   | 2124600023 | UI/UX Designer    | [@abdiemuhyi](https://github.com/abdiemuhyi) |
 | 6  | Gandhi Husein Albana       | 2124600026 | Software Engineer | [@gandhialbana](https://github.com/gandhialbana-art) |
 
