@@ -33,26 +33,12 @@ ATmega2560 mengendalikan relay untuk menghubungkan atau memutus daya lampu.
 
 Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 
-System Architecture
-Kasir Application
-        │
-        ▼
-Serial Communication
-        │
-        ▼
-ATmega2560 Controller
-        │
-        ▼
-Relay Module
-        │
-        ▼
-Billiard Table Lighting
 
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
 | :---: | :--- | :---: | :--- | :--- | :---: |
-| **1** | **M. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
+| **1** | **Muh. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
 | **2** | **Moh Harudin Ali** | 2124600008 | **Software Engineer (Firmware)**<br>• Pengodean logika kontrol pemutusan relay | [@Harudin31](https://github.com/Harudin31) | 🟢 Done Commit |
 | **3** | **Achmad Rafie Febriansyah** | 2124600011 | **3D Designer**<br>• Pemodelan objek 3D casing box komponen | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) | 🟢 Done Commit |
 | **4** | **Imam Syaifudin** | 2124600015 | **Hardware Engineer**<br>• Perancangan skema PCB KiCad & wiring fisik | [@imam603](https://github.com/imam603) | 🟢 Done Commit |
