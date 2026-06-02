@@ -98,7 +98,7 @@ Main Workflow
 ### 🟡 On Progress
 
 - [ ] Dashboard development
-- [ ] Git workflow configuration
+- [ ] Timer system implementation
 - [ ] Initial system design
 - [ ] Serial communication testing
 - [ ] Hardware assembly
