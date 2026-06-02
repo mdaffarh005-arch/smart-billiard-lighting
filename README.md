@@ -102,6 +102,8 @@ Main Workflow
 - [ ] Automatic billing calculation
 - [ ] Relay control integration
 - [ ] Hardware assembly
+- [ ] PCB design
+
 
 ### 🟢 Complete
 
