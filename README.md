@@ -16,7 +16,7 @@ Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk menga
 1. **Pencegahan Fraud:** Menghilangkan kecurangan oknum penjaga kasir yang menyewakan meja billiard tanpa mencatatnya di sistem keuangan.
 2. **Efisiensi Energi:** Menghentikan pemborosan listrik dengan mematikan lampu meja secara otomatis seketika setelah durasi main selesai atau saat meja kosong.
 
-## 👥 Anggota Kelompok
+## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap               | NIM        | Peran Utama       | Username GitHub |
 |----|----------------------------|------------|-------------------|-----------------|
