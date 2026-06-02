@@ -132,7 +132,6 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 
 * **ATmega2560**
 * **Wokwi Simulator**
-* **ATmega2560**
 * **VS Code**
 * **GitHub**
 * **KiCad**
