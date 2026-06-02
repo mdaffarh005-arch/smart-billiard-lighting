@@ -124,6 +124,8 @@ SDG 12 – Responsible Consumption and Production
 
 Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawab.
 
+🛠 Development Tools
+
 📚 Course Information
 
 * **Project Type:** Embedded System & IoT Project
