@@ -73,3 +73,5 @@ Improving energy efficiency through automated lighting control.
 🟤 SDG 12 — Responsible Consumption and Production
 
 Encouraging responsible electricity consumption in recreational facilities.
+
+📚 Course Information
