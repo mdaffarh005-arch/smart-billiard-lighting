@@ -59,3 +59,6 @@ Folder ini menyediakan beberapa sudut pandang desain:
 - RIGHT View
 - TOP Without Box Cover View
 - TOP Right Back Without Box Cover View
+## 3D Designer
+
+Achmad Rafie Febriansyah
