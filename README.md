@@ -41,6 +41,12 @@ Proyek ini dirancang sebagai solusi berbasis digital dan otomatisasi untuk menga
 - [ ] **UI/UX:** Pembuatan draf desain antarmuka (interface) dashboard aplikasi billing kasir berbasis web/IoT.
 - [ ] **Software (Database & Web):** Pengembangan arsitektur database billing kasir dan jembatan komunikasi data serial ke hardware.
 
-### 🟢 Complete
-- [x] Aktivasi akun GitHub personal oleh seluruh anggota tim.
-- [x] Pembuatan repository kelompok dan pengisian poin minimal 1 commit mandiri oleh setiap individu.
+✅ Completed
+
+Setup repository & Git workflow
+
+Initial system design
+
+Basic relay control implementation
+
+Team collaboration setup
