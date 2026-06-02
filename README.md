@@ -26,9 +26,9 @@ Menampilkan durasi bermain setiap meja secara real-time.
 
 Harga per menit dapat diatur sesuai kebutuhan operasional.
 
-🔌 Relay-Based Control
+🧮 Automatic Billing
 
-ATmega2560 mengendalikan relay untuk menghubungkan atau memutus daya lampu.
+Total biaya dihitung otomatis berdasarkan durasi penggunaan meja.
 
 📊 Monitoring Dashboard
 
