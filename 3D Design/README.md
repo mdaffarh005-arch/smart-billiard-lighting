@@ -26,3 +26,8 @@ Fitur desain:
 - Struktur penutup (cover)
 - Sistem pemasangan di atas meja biliar
 - Desain modular untuk memudahkan perawatan
+## Komponen Utama
+
+### Frame Utama
+
+Berfungsi sebagai rangka penopang seluruh sistem.
