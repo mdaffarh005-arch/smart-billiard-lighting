@@ -17,7 +17,7 @@ Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi 
 
 🎯 Objectives
 * **Mengurangi pemborosan energi listrik pada meja biliar.**
-* **Mengotomatisasi pencatatan durasi bermain pelanggan.*
+* **Mengotomatisasi pencatatan durasi bermain pelanggan.**
 * **Menghitung biaya sewa secara otomatis berdasarkan waktu penggunaan.**
 * **Mengurangi human error dalam operasional arena biliar.**
 * **Meningkatkan efisiensi pengelolaan meja dan transaksi kasir.**
