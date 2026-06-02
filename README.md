@@ -74,7 +74,7 @@ Main Workflow
 
 ## 👥 Tim Pengembang & Kontributor
 
-| No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
+| No | Nama Lengkap | NRP | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
 | :---: | :--- | :---: | :--- | :--- | :---: |
 | **1** | **Muh. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
 | **2** | **Moh Harudin Ali** | 2124600008 | **Software Engineer (Firmware)**<br>• Pengodean logika kontrol pemutusan relay | [@Harudin31](https://github.com/Harudin31) | 🟢 Done Commit |
