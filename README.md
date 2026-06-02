@@ -10,17 +10,28 @@ Smart Billiard Lighting adalah sistem otomatisasi lampu meja biliar yang terinte
 
 Proyek ini dikembangkan untuk meningkatkan efisiensi energi, meminimalkan human error, dan mendukung pengelolaan operasional arena biliar yang lebih modern.
 
-### 🚀 Fitur Utama
-* **Auto Cut-Off Listrik:** Pemutusan arus listrik lampu meja secara otomatis tepat ketika waktu sewa habis di sistem kasir.
-* **Anti-Fraud Mechanism:** Mengunci celah manipulasi laporan keuangan oleh oknum penjaga meja yang tidak mencatat sewa main pelanggan.
-* **Sistem Kendali Relay Aman:** Integrasi mikrokontroler dengan perlindungan casing box yang terisolasi dari risiko malafungsi arus pendek.
-* **Dashboard Monitoring:** Tampilan antarmuka visual (GUI) kasir yang memantau status aktif/nonaktif setiap meja biliar secara terpusat.
-
 🎯 Objectives
 - Mengurangi pemborosan energi listrik.
 - Mengotomatiskan kontrol lampu meja biliar.
 - Mengintegrasikan sistem billing dengan perangkat keras.
 - Meminimalkan risiko human error dalam operasional.
+
+✨ Key Features
+⚡ Automatic Power Control
+
+Lampu meja menyala dan mati secara otomatis berdasarkan status billing.
+
+🛡 Anti-Fraud System
+
+Mengurangi potensi penggunaan meja tanpa pencatatan transaksi.
+
+🔌 Relay-Based Control
+
+ATmega2560 mengendalikan relay untuk menghubungkan atau memutus daya lampu.
+
+📊 Monitoring Dashboard
+
+Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 
 ## 👥 Tim Pengembang & Kontributor
 
