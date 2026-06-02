@@ -38,6 +38,10 @@ Lampu meja menyala dan mati mengikuti status penggunaan meja.
 
 Operator dapat memilih mode kontrol manual maupun otomatis.
 
+📊 Monitoring Dashboard
+
+Monitoring status meja, timer, dan biaya melalui satu antarmuka.
+
 ## 👥 Tim Pengembang & Kontributor
 
 | No | Nama Lengkap | NIM | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
