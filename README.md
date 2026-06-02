@@ -75,3 +75,4 @@ Improving energy efficiency through automated lighting control.
 Encouraging responsible electricity consumption in recreational facilities.
 
 📚 Course Information
+Project Type: Embedded System & IoT Project
