@@ -30,9 +30,9 @@ Harga per menit dapat diatur sesuai kebutuhan operasional.
 
 Total biaya dihitung otomatis berdasarkan durasi penggunaan meja.
 
-📊 Monitoring Dashboard
+💡 Smart Lighting Control
 
-Status meja dapat dipantau melalui antarmuka aplikasi kasir.
+Lampu meja menyala dan mati mengikuti status penggunaan meja.
 
 ## 👥 Tim Pengembang & Kontributor
 
