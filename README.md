@@ -75,5 +75,7 @@ Improving energy efficiency through automated lighting control.
 Encouraging responsible electricity consumption in recreational facilities.
 
 📚 Course Information
+
 Project Type: Embedded System & IoT Project
 Microcontroller: ATmega2560
+Development Tools: Wokwi, VS Code, GitHub, KiCad, Figma
