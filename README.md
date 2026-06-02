@@ -69,3 +69,7 @@ Status meja dapat dipantau melalui antarmuka aplikasi kasir.
 🟡 SDG 7 — Affordable and Clean Energy
 
 Improving energy efficiency through automated lighting control.
+
+🟤 SDG 12 — Responsible Consumption and Production
+
+Encouraging responsible electricity consumption in recreational facilities.
