@@ -134,7 +134,7 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 * **Wokwi Simulator**
 * **VS Code**
 * **GitHub**
-* **KiCad**
+* **EasyEDA**
 * **Figma**
 * **Python Tkinter**
 
