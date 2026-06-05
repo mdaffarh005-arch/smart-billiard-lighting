@@ -1,10 +1,10 @@
 # Hardware
 
 # Isi Folder
-File Schematic (EasyEDA)
-File PCB Layout
-3D PCB View
-Wiring Diagram (Fritzing)
+- File Schematic (EasyEDA)
+- File PCB Layout
+- 3D PCB View
+- Wiring Diagram (Fritzing)
 
 
 # Arduino Mega 2560
