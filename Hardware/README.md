@@ -1,4 +1,6 @@
-# Hardware
+# 💡 Smart Billiard Lighting
+
+## 📂 Folder Hardware
 
 # Isi Folder
 - File Schematic (EasyEDA)
