@@ -24,12 +24,16 @@ GRAY = "#f7f7f7"
 ser = None
 selected_table = None
 selected_duration = None
+selected_status_table = None
+
 tarif_per_jam = 30000
 billing_active = False
 end_time = None
 
 table_buttons = []
 duration_buttons = []
+status_meja_buttons = {}
+active_sessions = {}
 
 
 def add_log(text):
@@ -105,8 +109,7 @@ def refresh_table_buttons():
 
 def refresh_duration_buttons():
     for btn in duration_buttons:
-        text = btn.cget("text")
-        if selected_duration is not None and text == f"{selected_duration} Jam":
+        if selected_duration is not None and btn.cget("text") == f"{selected_duration} Jam":
             btn.configure(fg_color=BLUE, text_color=WHITE)
         else:
             btn.configure(fg_color=GRAY, text_color=MUTED)
@@ -115,7 +118,6 @@ def refresh_duration_buttons():
 def select_table(table):
     global selected_table
     selected_table = table
-    table_value.configure(text=selected_table)
     refresh_table_buttons()
     update_total()
     add_log(f"{table} dipilih")
@@ -148,8 +150,87 @@ def update_total():
     )
 
 
+def get_sisa_waktu(table):
+    if table not in active_sessions:
+        return "-"
+
+    remaining = active_sessions[table]["end_time"] - datetime.now()
+
+    if remaining.total_seconds() <= 0:
+        return "00:00:00"
+
+    total_seconds = int(remaining.total_seconds())
+    h = total_seconds // 3600
+    m = (total_seconds % 3600) // 60
+    s = total_seconds % 60
+
+    return f"{h:02d}:{m:02d}:{s:02d}"
+
+
+def select_status_meja(table):
+    global selected_status_table
+    selected_status_table = table
+
+    table_value.configure(text=table)
+
+    if table in active_sessions:
+        timer_value.configure(text=get_sisa_waktu(table))
+        lamp_value.configure(text="ON", text_color=GREEN)
+    else:
+        timer_value.configure(text="00:00:00")
+        lamp_value.configure(text="OFF", text_color=RED)
+
+    refresh_status_meja()
+
+
+def refresh_status_meja():
+    for i in range(1, 5):
+        table = f"Meja {i}"
+        btn = status_meja_buttons[table]
+
+        if table in active_sessions:
+            sisa = get_sisa_waktu(table)
+            text = f"{table}\nAktif\nsisa: {sisa}"
+            fg = "#eefdf3"
+            tc = GREEN
+        else:
+            text = f"{table}\nKosong\nsisa: -"
+            fg = GRAY
+            tc = MUTED
+
+        if selected_status_table == table:
+            fg = BLUE
+            tc = WHITE
+
+        btn.configure(text=text, fg_color=fg, text_color=tc)
+
+
+def update_status_timer():
+    expired_tables = []
+
+    for table in list(active_sessions.keys()):
+        if get_sisa_waktu(table) == "00:00:00":
+            expired_tables.append(table)
+
+    for table in expired_tables:
+        del active_sessions[table]
+        add_log(f"{table} selesai, lampu dimatikan otomatis")
+        send_command("OFF")
+
+    if selected_status_table:
+        if selected_status_table in active_sessions:
+            timer_value.configure(text=get_sisa_waktu(selected_status_table))
+            lamp_value.configure(text="ON", text_color=GREEN)
+        else:
+            timer_value.configure(text="00:00:00")
+            lamp_value.configure(text="OFF", text_color=RED)
+
+    refresh_status_meja()
+    app.after(1000, update_status_timer)
+
+
 def start_billing():
-    global billing_active, end_time
+    global billing_active, end_time, selected_status_table
 
     if selected_table is None:
         add_log("Pilih meja terlebih dahulu")
@@ -162,18 +243,40 @@ def start_billing():
     billing_active = True
     end_time = datetime.now() + timedelta(hours=selected_duration)
 
+    active_sessions[selected_table] = {
+        "duration": selected_duration,
+        "end_time": end_time,
+        "lamp": "ON"
+    }
+
+    selected_status_table = selected_table
+
     table_value.configure(text=selected_table)
+    timer_value.configure(text=get_sisa_waktu(selected_table))
     lamp_value.configure(text="ON", text_color=GREEN)
+
     send_command("ON")
 
+    billing_active_label.configure(
+        text=f"Meja Aktif : {selected_table}\n"
+             f"Status     : Berjalan\n"
+             f"Durasi     : {selected_duration} Jam\n"
+             f"Sisa Waktu : {get_sisa_waktu(selected_table)}\n"
+             f"Lampu      : ON"
+    )
+
+    refresh_status_meja()
     add_log(f"Billing dimulai untuk {selected_table} selama {selected_duration} jam")
-    update_billing_timer()
 
 
 def stop_billing():
     global billing_active
 
     billing_active = False
+
+    if selected_status_table in active_sessions:
+        del active_sessions[selected_status_table]
+
     timer_value.configure(text="00:00:00")
     lamp_value.configure(text="OFF", text_color=RED)
     send_command("OFF")
@@ -185,52 +288,24 @@ def stop_billing():
              "Lampu      : OFF"
     )
 
+    refresh_status_meja()
     add_log("Billing selesai, lampu dimatikan")
 
 
 def add_time():
-    global end_time
-
-    if billing_active and end_time:
-        end_time += timedelta(hours=1)
-        add_log("Waktu billing ditambah 1 jam")
+    if selected_status_table in active_sessions:
+        active_sessions[selected_status_table]["end_time"] += timedelta(hours=1)
+        add_log(f"Waktu {selected_status_table} ditambah 1 jam")
     else:
         add_log("Tidak ada billing aktif")
-
-
-def update_billing_timer():
-    global billing_active
-
-    if billing_active and end_time:
-        remaining = end_time - datetime.now()
-
-        if remaining.total_seconds() <= 0:
-            stop_billing()
-            return
-
-        total_seconds = int(remaining.total_seconds())
-        h = total_seconds // 3600
-        m = (total_seconds % 3600) // 60
-        s = total_seconds % 60
-
-        time_text = f"{h:02d}:{m:02d}:{s:02d}"
-        timer_value.configure(text=time_text)
-
-        billing_active_label.configure(
-            text=f"Meja Aktif : {selected_table}\n"
-                 f"Status     : Berjalan\n"
-                 f"Durasi     : {selected_duration} Jam\n"
-                 f"Sisa Waktu : {time_text}\n"
-                 f"Lampu      : ON"
-        )
-
-        app.after(1000, update_billing_timer)
 
 
 def update_clock():
     clock_label.configure(text=datetime.now().strftime("%d/%m/%y\n%H:%M:%S"))
     app.after(1000, update_clock)
 
+
+# ================= SIDEBAR =================
 
 sidebar = ctk.CTkFrame(app, width=155, fg_color=WHITE, corner_radius=0)
 sidebar.pack(side="left", fill="y")
@@ -275,6 +350,8 @@ billing_menu = ctk.CTkButton(
 )
 billing_menu.pack(fill="x", padx=18, pady=5)
 
+
+# ================= MAIN =================
 
 main = ctk.CTkFrame(app, fg_color="#f5f7fb", corner_radius=0)
 main.pack(side="left", fill="both", expand=True, padx=28, pady=28)
@@ -378,6 +455,8 @@ def card(parent, title, value, color):
     return lbl
 
 
+# ================= DASHBOARD =================
+
 dashboard_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 dashboard_frame.pack(fill="both", expand=True)
 
@@ -454,25 +533,26 @@ grid = ctk.CTkFrame(status_meja, fg_color="transparent")
 grid.pack(fill="x", padx=18, pady=(0, 16))
 
 for i in range(4):
-    meja = ctk.CTkFrame(
+    table_name = f"Meja {i + 1}"
+
+    btn = ctk.CTkButton(
         grid,
+        text=f"{table_name}\nKosong\nsisa: -",
+        command=lambda t=table_name: select_status_meja(t),
         width=170,
         height=70,
-        fg_color="#f7f7f7",
+        fg_color=GRAY,
+        text_color=MUTED,
         corner_radius=12,
         border_width=1,
-        border_color="#d7d7d7"
-    )
-    meja.grid(row=i // 2, column=i % 2, padx=12, pady=8)
-    meja.pack_propagate(False)
-
-    ctk.CTkLabel(
-        meja,
-        text=f"Meja {i+1}\nAktif\nsisa: -",
-        text_color=MUTED,
+        border_color="#d7d7d7",
+        hover_color="#e8ecff",
         font=("Segoe UI", 9),
-        justify="left"
-    ).pack(anchor="w", padx=14, pady=10)
+        anchor="w"
+    )
+
+    btn.grid(row=i // 2, column=i % 2, padx=12, pady=8)
+    status_meja_buttons[table_name] = btn
 
 log_frame = ctk.CTkFrame(right_dash, fg_color=WHITE, corner_radius=18)
 log_frame.pack(fill="both", expand=True)
@@ -495,6 +575,8 @@ log_box = ctk.CTkTextbox(
 )
 log_box.pack(fill="both", expand=True, padx=18, pady=(0, 18))
 
+
+# ================= BILLING =================
 
 billing_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 
@@ -622,4 +704,6 @@ billing_active_label.pack(fill="both", expand=True, padx=24, pady=10)
 update_total()
 add_log("Dashboard siap digunakan")
 update_clock()
+refresh_status_meja()
+update_status_timer()
 app.mainloop()
