@@ -832,6 +832,7 @@ for i in range(4):
         font=("Segoe UI", 9),
         anchor="w"
     )
+    btn._text_label.configure(justify="left", anchor="w")
     btn.grid(row=i // 2, column=i % 2, padx=12, pady=8)
     status_meja_buttons[table_name] = btn
 
