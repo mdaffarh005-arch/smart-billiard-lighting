@@ -15,6 +15,7 @@ void stopTable(uint8_t index)
 {
     tables[index].active = false;
     tables[index].remainSec = 0;
+    tables[index].endTime = 0;
 
     Relay_Off(index);
 
@@ -28,8 +29,10 @@ void stopAllTables(void)
     for(uint8_t i = 0; i < 4; i++)
     {
         Relay_Off(i);
+
         tables[i].active = false;
         tables[i].remainSec = 0;
+        tables[i].endTime = 0;
     }
 }
 
@@ -55,7 +58,47 @@ void processCommand(char *cmd)
     if(cmd == NULL)
         return;
 
-    if(cmd[0] == 'M')
+    if(strncmp(cmd, "ON:", 3) == 0)
+    {
+        int meja = atoi(cmd + 3);
+
+        if(meja >= 1 && meja <= 4)
+        {
+            uint8_t index = meja - 1;
+
+            Relay_On(index);
+
+            tables[index].active = true;
+            tables[index].remainSec = 0;
+            tables[index].endTime = 0;
+
+            char buffer[32];
+            sprintf(buffer, "LAMP_ON:%d\r\n", meja);
+            UART_SendString(buffer);
+        }
+    }
+
+    else if(strncmp(cmd, "OFF:", 4) == 0)
+    {
+        int meja = atoi(cmd + 4);
+
+        if(meja >= 1 && meja <= 4)
+        {
+            uint8_t index = meja - 1;
+
+            Relay_Off(index);
+
+            tables[index].active = false;
+            tables[index].remainSec = 0;
+            tables[index].endTime = 0;
+
+            char buffer[32];
+            sprintf(buffer, "LAMP_OFF:%d\r\n", meja);
+            UART_SendString(buffer);
+        }
+    }
+
+    else if(cmd[0] == 'M')
     {
         char *comma = strchr(cmd, ',');
 
@@ -90,34 +133,6 @@ void processCommand(char *cmd)
         }
     }
 
-    else if(strncmp(cmd, "ON:", 3) == 0)
-    {
-        int meja = atoi(cmd + 3);
-
-        if(meja >= 1 && meja <= 4)
-        {
-            Relay_On(meja - 1);
-
-            char buffer[32];
-            sprintf(buffer, "LAMP_ON:%d\r\n", meja);
-            UART_SendString(buffer);
-        }
-    }
-
-    else if(strncmp(cmd, "OFF:", 4) == 0)
-    {
-        int meja = atoi(cmd + 4);
-
-        if(meja >= 1 && meja <= 4)
-        {
-            Relay_Off(meja - 1);
-
-            char buffer[32];
-            sprintf(buffer, "LAMP_OFF:%d\r\n", meja);
-            UART_SendString(buffer);
-        }
-    }
-
     else if(strcmp(cmd, "RESET") == 0)
     {
         stopAllTables();
@@ -137,7 +152,7 @@ void updateTables(void)
 
     for(uint8_t i = 0; i < 4; i++)
     {
-        if(tables[i].active)
+        if(tables[i].active && tables[i].endTime > 0)
         {
             if(now >= tables[i].endTime)
             {

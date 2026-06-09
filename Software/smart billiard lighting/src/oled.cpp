@@ -20,8 +20,6 @@ Adafruit_SSD1306 display(
     &Wire,
     -1);
 
-// ======================================================
-
 void OLED_Init(void)
 {
     Wire.begin();
@@ -34,65 +32,61 @@ void OLED_Init(void)
     display.display();
 }
 
-// ======================================================
-
 void drawOLED(void)
 {
     display.clearDisplay();
 
     display.setTextSize(1);
-    display.setTextColor(
-        SSD1306_WHITE);
+    display.setTextColor(SSD1306_WHITE);
 
     if(!systemEnabled)
     {
-        display.setCursor(15,10);
-        display.println(
-            "SMART BILLIARD");
+        display.setCursor(15, 10);
+        display.println("SMART BILLIARD");
 
-        display.setCursor(20,30);
-        display.println(
-            "PRESS START");
+        display.setCursor(20, 30);
+        display.println("PRESS START");
     }
     else
     {
-        display.setCursor(0,0);
-        display.println(
-            "SYSTEM READY");
+        display.setCursor(0, 0);
+        display.println("SYSTEM READY");
 
-        for(int i=0;i<4;i++)
+        for(int i = 0; i < 4; i++)
         {
-            display.setCursor(
-                0,
-                16+(i*12));
+            display.setCursor(0, 16 + (i * 12));
 
             display.print("M");
-            display.print(i+1);
+            display.print(i + 1);
             display.print(": ");
 
             if(tables[i].active)
             {
-                uint16_t min =
-                    tables[i]
-                    .remainSec / 60;
+                uint32_t totalSec = tables[i].remainSec;
 
-                uint16_t sec =
-                    tables[i]
-                    .remainSec % 60;
+                uint16_t hour = totalSec / 3600;
+                uint16_t min = (totalSec % 3600) / 60;
+                uint16_t sec = totalSec % 60;
 
+                if(hour < 10)
+                    display.print("0");
+                display.print(hour);
+
+                display.print(":");
+
+                if(min < 10)
+                    display.print("0");
                 display.print(min);
 
                 display.print(":");
 
                 if(sec < 10)
                     display.print("0");
-
                 display.print(sec);
             }
             else
             {
-                display.print(
-                    "OFF");
+                display.print("OFF");
             }
         }
     }

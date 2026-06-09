@@ -541,13 +541,12 @@ def start_billing():
     table_value.configure(text=selected_table)
     timer_value.configure(text=get_sisa_waktu(selected_table))
 
-    if current_mode == "AUTO":
-        update_lamp_status("ON")
-        send_lamp_command(selected_table, "ON")
-    else:
-        manual_lamp_states[selected_table] = "ON"
-        update_lamp_status("ON")
-        send_lamp_command(selected_table, "ON")
+    update_lamp_status("ON")
+
+    table_number = get_table_number(selected_table)
+    duration_minutes = int(selected_duration * 60)
+
+    send_command(f"M{table_number},{duration_minutes}")
 
     refresh_status_meja()
     update_billing_active_label()
@@ -559,6 +558,8 @@ def stop_billing():
         add_log("Pilih meja terlebih dahulu pada Status Meja")
         return
 
+    table_number = get_table_number(selected_status_table)
+
     if selected_status_table in active_sessions:
         del active_sessions[selected_status_table]
         add_log(f"Billing {selected_status_table} dihentikan")
@@ -567,12 +568,12 @@ def stop_billing():
 
     timer_value.configure(text="00:00:00")
 
+    send_command(f"STOP,{table_number}")
+
     if current_mode == "AUTO":
-        send_lamp_command(selected_status_table, "OFF")
         update_lamp_status("OFF")
     else:
         manual_lamp_states[selected_status_table] = "OFF"
-        send_lamp_command(selected_status_table, "OFF")
         update_lamp_status("OFF")
 
     refresh_status_meja()
