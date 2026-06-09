@@ -19,13 +19,17 @@ RED = "#ef4444"
 GREEN = "#22c55e"
 YELLOW = "#f59e0b"
 BORDER = "#e5e7eb"
+GRAY = "#f7f7f7"
 
 ser = None
-selected_table = "Meja 1"
-selected_duration = 2
+selected_table = None
+selected_duration = None
 tarif_per_jam = 30000
 billing_active = False
 end_time = None
+
+table_buttons = []
+duration_buttons = []
 
 
 def add_log(text):
@@ -48,7 +52,6 @@ def send_command(cmd):
 
 def connect_arduino():
     global ser
-
     try:
         ser = serial.Serial("COM6", 9600, timeout=1)
         arduino_status.configure(text="Arduino\nConnected", text_color=GREEN)
@@ -92,10 +95,28 @@ def lamp_off():
     send_command("OFF")
 
 
+def refresh_table_buttons():
+    for btn in table_buttons:
+        if btn.cget("text") == selected_table:
+            btn.configure(fg_color=BLUE, text_color=WHITE)
+        else:
+            btn.configure(fg_color=GRAY, text_color=MUTED)
+
+
+def refresh_duration_buttons():
+    for btn in duration_buttons:
+        text = btn.cget("text")
+        if selected_duration is not None and text == f"{selected_duration} Jam":
+            btn.configure(fg_color=BLUE, text_color=WHITE)
+        else:
+            btn.configure(fg_color=GRAY, text_color=MUTED)
+
+
 def select_table(table):
     global selected_table
     selected_table = table
     table_value.configure(text=selected_table)
+    refresh_table_buttons()
     update_total()
     add_log(f"{table} dipilih")
 
@@ -103,22 +124,40 @@ def select_table(table):
 def select_duration(hour):
     global selected_duration
     selected_duration = hour
+    refresh_duration_buttons()
     update_total()
     add_log(f"Durasi {hour} jam dipilih")
 
 
 def update_total():
+    if selected_table is None or selected_duration is None:
+        total_tarif_label.configure(
+            text="Meja terpilih : -\n"
+                 "Durasi       : -\n"
+                 "Tarif/Jam    : Rp 30.000\n\n"
+                 "Total bayar  : -"
+        )
+        return
+
     total = selected_duration * tarif_per_jam
     total_tarif_label.configure(
-        text=f"Meja terpilih  : {selected_table}\n"
-             f"Durasi        : {selected_duration} Jam\n"
-             f"Tarif/Jam     : Rp {tarif_per_jam:,}\n\n"
-             f"Total bayar   : Rp {total:,}".replace(",", ".")
+        text=f"Meja terpilih : {selected_table}\n"
+             f"Durasi       : {selected_duration} Jam\n"
+             f"Tarif/Jam    : Rp {tarif_per_jam:,}\n\n"
+             f"Total bayar  : Rp {total:,}".replace(",", ".")
     )
 
 
 def start_billing():
     global billing_active, end_time
+
+    if selected_table is None:
+        add_log("Pilih meja terlebih dahulu")
+        return
+
+    if selected_duration is None:
+        add_log("Pilih durasi terlebih dahulu")
+        return
 
     billing_active = True
     end_time = datetime.now() + timedelta(hours=selected_duration)
@@ -140,10 +179,10 @@ def stop_billing():
     send_command("OFF")
 
     billing_active_label.configure(
-        text=f"Meja Aktif : -\n"
-             f"Status     : Selesai\n"
-             f"Sisa Waktu : 00:00:00\n"
-             f"Lampu      : OFF"
+        text="Meja Aktif : -\n"
+             "Status     : Selesai\n"
+             "Sisa Waktu : 00:00:00\n"
+             "Lampu      : OFF"
     )
 
     add_log("Billing selesai, lampu dimatikan")
@@ -193,8 +232,6 @@ def update_clock():
     app.after(1000, update_clock)
 
 
-# ================= SIDEBAR =================
-
 sidebar = ctk.CTkFrame(app, width=155, fg_color=WHITE, corner_radius=0)
 sidebar.pack(side="left", fill="y")
 sidebar.pack_propagate(False)
@@ -238,8 +275,6 @@ billing_menu = ctk.CTkButton(
 )
 billing_menu.pack(fill="x", padx=18, pady=5)
 
-
-# ================= MAIN =================
 
 main = ctk.CTkFrame(app, fg_color="#f5f7fb", corner_radius=0)
 main.pack(side="left", fill="both", expand=True, padx=28, pady=28)
@@ -342,8 +377,6 @@ def card(parent, title, value, color):
 
     return lbl
 
-
-# ================= DASHBOARD =================
 
 dashboard_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 dashboard_frame.pack(fill="both", expand=True)
@@ -463,8 +496,6 @@ log_box = ctk.CTkTextbox(
 log_box.pack(fill="both", expand=True, padx=18, pady=(0, 18))
 
 
-# ================= BILLING =================
-
 billing_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 
 hero(billing_frame, "BILLING CONTROL CENTER")
@@ -496,36 +527,18 @@ durasi_panel = panel(left_bill, "Pilih Durasi")
 total_panel = panel(right_bill, "Total Tarif")
 aktif_panel = panel(right_bill, "Billing Aktif")
 
-
-def option_btn(parent, text, command, active=False):
-    ctk.CTkButton(
-        parent,
-        text=text,
-        command=command,
-        width=180,
-        height=58,
-        fg_color=BLUE if active else "#f7f7f7",
-        text_color=WHITE if active else MUTED,
-        corner_radius=12,
-        border_width=1,
-        border_color="#d7d7d7",
-        hover_color=BLUE,
-        font=("Segoe UI", 11, "bold")
-    )
-
-
 meja_grid = ctk.CTkFrame(pilih_meja_panel, fg_color="transparent")
 meja_grid.pack(padx=18, pady=8)
 
 for i in range(4):
     btn = ctk.CTkButton(
         meja_grid,
-        text=f"Meja {i+1}",
-        command=lambda n=i+1: select_table(f"Meja {n}"),
+        text=f"Meja {i + 1}",
+        command=lambda n=i + 1: select_table(f"Meja {n}"),
         width=180,
         height=58,
-        fg_color=BLUE if i == 0 else "#f7f7f7",
-        text_color=WHITE if i == 0 else MUTED,
+        fg_color=GRAY,
+        text_color=MUTED,
         corner_radius=12,
         border_width=1,
         border_color="#d7d7d7",
@@ -533,23 +546,23 @@ for i in range(4):
         font=("Segoe UI", 11, "bold")
     )
     btn.grid(row=i // 2, column=i % 2, padx=16, pady=8)
+    table_buttons.append(btn)
 
 durasi_grid = ctk.CTkFrame(durasi_panel, fg_color="transparent")
 durasi_grid.pack(padx=18, pady=8)
 
-durations = [1, 2, 3, 0]
 labels = ["1 Jam", "2 Jam", "3 Jam", "CUSTOM"]
+values = [1, 2, 3, None]
 
 for i, label in enumerate(labels):
-    value = durations[i]
     btn = ctk.CTkButton(
         durasi_grid,
         text=label,
-        command=lambda v=value: select_duration(v if v != 0 else 1),
+        command=lambda v=values[i]: select_duration(v if v is not None else 1),
         width=180,
         height=58,
-        fg_color=BLUE if label == "2 Jam" else "#f7f7f7",
-        text_color=WHITE if label == "2 Jam" else MUTED,
+        fg_color=GRAY,
+        text_color=MUTED,
         corner_radius=12,
         border_width=1,
         border_color="#d7d7d7",
@@ -557,6 +570,7 @@ for i, label in enumerate(labels):
         font=("Segoe UI", 11, "bold")
     )
     btn.grid(row=i // 2, column=i % 2, padx=16, pady=8)
+    duration_buttons.append(btn)
 
 total_tarif_label = ctk.CTkLabel(
     total_panel,
@@ -571,9 +585,29 @@ total_tarif_label.pack(fill="x", padx=24, pady=(0, 10))
 btns = ctk.CTkFrame(total_panel, fg_color="transparent")
 btns.pack(fill="x", padx=20, pady=8)
 
-ctk.CTkButton(btns, text="Mulai", command=start_billing, fg_color=GREEN, height=32).pack(side="left", expand=True, fill="x", padx=5)
-ctk.CTkButton(btns, text="Tambah", command=add_time, fg_color=BLUE, height=32).pack(side="left", expand=True, fill="x", padx=5)
-ctk.CTkButton(btns, text="Selesai", command=stop_billing, fg_color=RED, height=32).pack(side="left", expand=True, fill="x", padx=5)
+ctk.CTkButton(
+    btns,
+    text="Mulai",
+    command=start_billing,
+    fg_color=GREEN,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
+
+ctk.CTkButton(
+    btns,
+    text="Tambah",
+    command=add_time,
+    fg_color=BLUE,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
+
+ctk.CTkButton(
+    btns,
+    text="Selesai",
+    command=stop_billing,
+    fg_color=RED,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
 
 billing_active_label = ctk.CTkLabel(
     aktif_panel,
@@ -584,7 +618,6 @@ billing_active_label = ctk.CTkLabel(
     anchor="nw"
 )
 billing_active_label.pack(fill="both", expand=True, padx=24, pady=10)
-
 
 update_total()
 add_log("Dashboard siap digunakan")
