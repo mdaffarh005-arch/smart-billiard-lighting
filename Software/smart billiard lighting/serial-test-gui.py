@@ -28,7 +28,12 @@ selected_duration = None
 selected_status_table = None
 
 current_mode = "AUTO"
-manual_lamp_state = "OFF"
+manual_lamp_states = {
+    "Meja 1": "OFF",
+    "Meja 2": "OFF",
+    "Meja 3": "OFF",
+    "Meja 4": "OFF",
+}
 
 tarif_per_jam = 30000
 end_time = None
@@ -43,6 +48,12 @@ def add_log(text):
     now = datetime.now().strftime("%H:%M:%S")
     log_box.insert("end", f"[{now}] {text}\n")
     log_box.see("end")
+
+
+def get_table_number(table):
+    if table is None:
+        return None
+    return table.replace("Meja ", "")
 
 
 def send_command(cmd):
@@ -62,6 +73,16 @@ def send_command(cmd):
 
     except Exception as e:
         add_log(f"Error kirim data: {e}")
+
+
+def send_lamp_command(table, state):
+    table_number = get_table_number(table)
+
+    if table_number is None:
+        add_log("Meja belum dipilih")
+        return
+
+    send_command(f"{state}:{table_number}")
 
 
 def connect_arduino():
@@ -116,18 +137,28 @@ def update_mode_status(mode):
         mode_bar.configure(fg_color=YELLOW)
 
 
+def update_selected_lamp_view():
+    if selected_status_table is None:
+        update_lamp_status("OFF")
+        return
+
+    if current_mode == "AUTO":
+        if selected_status_table in active_sessions:
+            update_lamp_status("ON")
+        else:
+            update_lamp_status("OFF")
+    else:
+        update_lamp_status(manual_lamp_states.get(selected_status_table, "OFF"))
+
+
 def set_mode_auto():
     global current_mode
 
     current_mode = "AUTO"
     update_mode_status("AUTO")
-
-    if selected_status_table in active_sessions:
-        update_lamp_status("ON")
-    else:
-        update_lamp_status("OFF")
-
+    update_selected_lamp_view()
     send_command("AUTO")
+    add_log("Mode AUTO aktif")
 
 
 def set_mode_manual():
@@ -135,24 +166,41 @@ def set_mode_manual():
 
     current_mode = "MANUAL"
     update_mode_status("MANUAL")
-    update_lamp_status(manual_lamp_state)
+    update_selected_lamp_view()
     send_command("MANUAL")
+    add_log("Mode MANUAL aktif")
 
 
 def lamp_on():
-    global manual_lamp_state
+    if current_mode == "AUTO":
+        add_log("Mode AUTO aktif, ubah ke MANUAL untuk kontrol lampu manual")
+        return
 
-    manual_lamp_state = "ON"
+    if selected_status_table is None:
+        add_log("Pilih meja terlebih dahulu pada Status Meja")
+        return
+
+    manual_lamp_states[selected_status_table] = "ON"
     update_lamp_status("ON")
-    send_command("ON")
+    refresh_status_meja()
+    send_lamp_command(selected_status_table, "ON")
+    add_log(f"Lampu {selected_status_table} dinyalakan manual")
 
 
 def lamp_off():
-    global manual_lamp_state
+    if current_mode == "AUTO":
+        add_log("Mode AUTO aktif, ubah ke MANUAL untuk kontrol lampu manual")
+        return
 
-    manual_lamp_state = "OFF"
+    if selected_status_table is None:
+        add_log("Pilih meja terlebih dahulu pada Status Meja")
+        return
+
+    manual_lamp_states[selected_status_table] = "OFF"
     update_lamp_status("OFF")
-    send_command("OFF")
+    refresh_status_meja()
+    send_lamp_command(selected_status_table, "OFF")
+    add_log(f"Lampu {selected_status_table} dimatikan manual")
 
 
 def refresh_table_buttons():
@@ -252,11 +300,7 @@ def open_custom_duration():
         add_log(f"Custom durasi dipilih: {jam} jam {menit} menit")
         popup.destroy()
 
-    card_popup = ctk.CTkFrame(
-        popup,
-        fg_color=WHITE,
-        corner_radius=22
-    )
+    card_popup = ctk.CTkFrame(popup, fg_color=WHITE, corner_radius=22)
     card_popup.pack(fill="both", expand=True, padx=22, pady=22)
 
     ctk.CTkLabel(
@@ -278,28 +322,13 @@ def open_custom_duration():
     menit_col = ctk.CTkFrame(picker, fg_color="transparent")
     menit_col.grid(row=0, column=2, padx=(8, 0))
 
-    jam_prev = ctk.CTkLabel(
-        jam_col,
-        text="00",
-        text_color="#cfd6d1",
-        font=("Segoe UI", 42, "bold")
-    )
+    jam_prev = ctk.CTkLabel(jam_col, text="00", text_color="#cfd6d1", font=("Segoe UI", 42, "bold"))
     jam_prev.pack()
 
-    jam_now = ctk.CTkLabel(
-        jam_col,
-        text="01",
-        text_color="#95a297",
-        font=("Segoe UI", 54, "bold")
-    )
+    jam_now = ctk.CTkLabel(jam_col, text="01", text_color="#95a297", font=("Segoe UI", 54, "bold"))
     jam_now.pack()
 
-    jam_next = ctk.CTkLabel(
-        jam_col,
-        text="02",
-        text_color="#cfd6d1",
-        font=("Segoe UI", 42, "bold")
-    )
+    jam_next = ctk.CTkLabel(jam_col, text="02", text_color="#cfd6d1", font=("Segoe UI", 42, "bold"))
     jam_next.pack()
 
     ctk.CTkLabel(
@@ -309,28 +338,13 @@ def open_custom_duration():
         font=("Segoe UI", 48, "bold")
     ).pack(pady=(10, 0))
 
-    menit_prev = ctk.CTkLabel(
-        menit_col,
-        text="59",
-        text_color="#cfd6d1",
-        font=("Segoe UI", 42, "bold")
-    )
+    menit_prev = ctk.CTkLabel(menit_col, text="59", text_color="#cfd6d1", font=("Segoe UI", 42, "bold"))
     menit_prev.pack()
 
-    menit_now = ctk.CTkLabel(
-        menit_col,
-        text="00",
-        text_color="#95a297",
-        font=("Segoe UI", 54, "bold")
-    )
+    menit_now = ctk.CTkLabel(menit_col, text="00", text_color="#95a297", font=("Segoe UI", 54, "bold"))
     menit_now.pack()
 
-    menit_next = ctk.CTkLabel(
-        menit_col,
-        text="01",
-        text_color="#cfd6d1",
-        font=("Segoe UI", 42, "bold")
-    )
+    menit_next = ctk.CTkLabel(menit_col, text="01", text_color="#cfd6d1", font=("Segoe UI", 42, "bold"))
     menit_next.pack()
 
     for widget in [jam_prev, jam_now, jam_next]:
@@ -407,6 +421,28 @@ def get_sisa_waktu(table):
     return f"{h:02d}:{m:02d}:{s:02d}"
 
 
+def update_billing_active_label():
+    if not active_sessions:
+        billing_active_label.configure(text="Belum ada billing aktif", text_color=MUTED)
+        return
+
+    text = ""
+
+    for table, data in active_sessions.items():
+        lamp_status = "ON" if table in active_sessions else manual_lamp_states.get(table, "OFF")
+
+        text += (
+            f"{table}\n"
+            f"Status     : Berjalan\n"
+            f"Durasi     : {format_duration(data['duration'])}\n"
+            f"Sisa Waktu : {get_sisa_waktu(table)}\n"
+            f"Lampu      : {lamp_status}\n"
+            f"----------------------\n"
+        )
+
+    billing_active_label.configure(text=text, text_color=TEXT)
+
+
 def select_status_meja(table):
     global selected_status_table
 
@@ -415,13 +451,10 @@ def select_status_meja(table):
 
     if table in active_sessions:
         timer_value.configure(text=get_sisa_waktu(table))
-        if current_mode == "AUTO":
-            update_lamp_status("ON")
     else:
         timer_value.configure(text="00:00:00")
-        if current_mode == "AUTO":
-            update_lamp_status("OFF")
 
+    update_selected_lamp_view()
     refresh_status_meja()
 
 
@@ -432,11 +465,19 @@ def refresh_status_meja():
 
         if table in active_sessions:
             sisa = get_sisa_waktu(table)
-            text = f"{table}\nAktif\nsisa: {sisa}"
+            if current_mode == "AUTO":
+                lamp_text = "Lampu: ON"
+            else:
+                lamp_text = f"Lampu: {manual_lamp_states.get(table, 'OFF')}"
+            text = f"{table}\nAktif\nsisa: {sisa}\n{lamp_text}"
             fg = "#eefdf3"
             tc = GREEN
         else:
-            text = f"{table}\nKosong\nsisa: -"
+            if current_mode == "MANUAL":
+                lamp_text = f"Lampu: {manual_lamp_states.get(table, 'OFF')}"
+            else:
+                lamp_text = "Lampu: OFF"
+            text = f"{table}\nKosong\nsisa: -\n{lamp_text}"
             fg = GRAY
             tc = MUTED
 
@@ -459,24 +500,20 @@ def update_status_timer():
         add_log(f"{table} selesai")
 
         if current_mode == "AUTO":
-            send_command("OFF")
-            if selected_status_table == table:
-                update_lamp_status("OFF")
+            send_lamp_command(table, "OFF")
+
+        if selected_status_table == table:
+            timer_value.configure(text="00:00:00")
 
     if selected_status_table:
         if selected_status_table in active_sessions:
             timer_value.configure(text=get_sisa_waktu(selected_status_table))
-
-            if current_mode == "AUTO":
-                update_lamp_status("ON")
-
         else:
             timer_value.configure(text="00:00:00")
 
-            if current_mode == "AUTO":
-                update_lamp_status("OFF")
-
+    update_selected_lamp_view()
     refresh_status_meja()
+    update_billing_active_label()
     app.after(1000, update_status_timer)
 
 
@@ -506,46 +543,48 @@ def start_billing():
 
     if current_mode == "AUTO":
         update_lamp_status("ON")
-
-    send_command("ON")
-
-    billing_active_label.configure(
-        text=f"Meja Aktif : {selected_table}\n"
-             f"Status     : Berjalan\n"
-             f"Durasi     : {format_duration(selected_duration)}\n"
-             f"Sisa Waktu : {get_sisa_waktu(selected_table)}\n"
-             f"Lampu      : ON"
-    )
+        send_lamp_command(selected_table, "ON")
+    else:
+        manual_lamp_states[selected_table] = "ON"
+        update_lamp_status("ON")
+        send_lamp_command(selected_table, "ON")
 
     refresh_status_meja()
+    update_billing_active_label()
     add_log(f"Billing dimulai untuk {selected_table} selama {format_duration(selected_duration)}")
 
 
 def stop_billing():
+    if selected_status_table is None:
+        add_log("Pilih meja terlebih dahulu pada Status Meja")
+        return
+
     if selected_status_table in active_sessions:
         del active_sessions[selected_status_table]
+        add_log(f"Billing {selected_status_table} dihentikan")
+    else:
+        add_log("Tidak ada billing aktif pada meja yang dipilih")
 
     timer_value.configure(text="00:00:00")
 
     if current_mode == "AUTO":
+        send_lamp_command(selected_status_table, "OFF")
+        update_lamp_status("OFF")
+    else:
+        manual_lamp_states[selected_status_table] = "OFF"
+        send_lamp_command(selected_status_table, "OFF")
         update_lamp_status("OFF")
 
-    send_command("OFF")
-
-    billing_active_label.configure(
-        text="Meja Aktif : -\n"
-             "Status     : Selesai\n"
-             "Sisa Waktu : 00:00:00\n"
-             "Lampu      : OFF"
-    )
-
     refresh_status_meja()
-    add_log("Billing selesai, lampu dimatikan")
+    update_billing_active_label()
 
 
 def add_time():
     if selected_status_table in active_sessions:
         active_sessions[selected_status_table]["end_time"] += timedelta(hours=1)
+        active_sessions[selected_status_table]["duration"] += 1
+        update_billing_active_label()
+        refresh_status_meja()
         add_log(f"Waktu {selected_status_table} ditambah 1 jam")
     else:
         add_log("Tidak ada billing aktif")
@@ -555,8 +594,6 @@ def update_clock():
     clock_label.configure(text=datetime.now().strftime("%d/%m/%y\n%H:%M:%S"))
     app.after(1000, update_clock)
 
-
-# ================= SIDEBAR =================
 
 sidebar = ctk.CTkFrame(app, width=155, fg_color=WHITE, corner_radius=0)
 sidebar.pack(side="left", fill="y")
@@ -600,9 +637,6 @@ billing_menu = ctk.CTkButton(
     font=("Segoe UI", 10, "bold")
 )
 billing_menu.pack(fill="x", padx=18, pady=5)
-
-
-# ================= MAIN =================
 
 main = ctk.CTkFrame(app, fg_color="#f5f7fb", corner_radius=0)
 main.pack(side="left", fill="both", expand=True, padx=28, pady=28)
@@ -705,8 +739,6 @@ def card(parent, title, value, color):
     return lbl, bar
 
 
-# ================= DASHBOARD =================
-
 dashboard_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 dashboard_frame.pack(fill="both", expand=True)
 
@@ -787,10 +819,10 @@ for i in range(4):
 
     btn = ctk.CTkButton(
         grid,
-        text=f"{table_name}\nKosong\nsisa: -",
+        text=f"{table_name}\nKosong\nsisa: -\nLampu: OFF",
         command=lambda t=table_name: select_status_meja(t),
         width=170,
-        height=70,
+        height=76,
         fg_color=GRAY,
         text_color=MUTED,
         corner_radius=12,
@@ -823,9 +855,6 @@ log_box = ctk.CTkTextbox(
     border_color="#d7d7d7"
 )
 log_box.pack(fill="both", expand=True, padx=18, pady=(0, 18))
-
-
-# ================= BILLING =================
 
 billing_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 
@@ -958,5 +987,6 @@ update_total()
 add_log("Dashboard siap digunakan")
 update_clock()
 refresh_status_meja()
+update_billing_active_label()
 update_status_timer()
 app.mainloop()
