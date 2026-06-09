@@ -109,7 +109,15 @@ def refresh_table_buttons():
 
 def refresh_duration_buttons():
     for btn in duration_buttons:
-        if selected_duration is not None and btn.cget("text") == f"{selected_duration} Jam":
+        text = btn.cget("text")
+
+        if selected_duration == 1 and text == "1 Jam":
+            btn.configure(fg_color=BLUE, text_color=WHITE)
+        elif selected_duration == 2 and text == "2 Jam":
+            btn.configure(fg_color=BLUE, text_color=WHITE)
+        elif selected_duration == 3 and text == "3 Jam":
+            btn.configure(fg_color=BLUE, text_color=WHITE)
+        elif selected_duration not in [None, 1, 2, 3] and text == "CUSTOM":
             btn.configure(fg_color=BLUE, text_color=WHITE)
         else:
             btn.configure(fg_color=GRAY, text_color=MUTED)
@@ -128,7 +136,89 @@ def select_duration(hour):
     selected_duration = hour
     refresh_duration_buttons()
     update_total()
-    add_log(f"Durasi {hour} jam dipilih")
+    add_log(f"Durasi {format_duration(hour)} dipilih")
+
+
+def open_custom_duration():
+    popup = ctk.CTkToplevel(app)
+    popup.title("Custom Durasi")
+    popup.geometry("320x250")
+    popup.configure(fg_color="#f5f7fb")
+    popup.grab_set()
+
+    ctk.CTkLabel(
+        popup,
+        text="Custom Durasi",
+        font=("Segoe UI", 20, "bold"),
+        text_color=TEXT
+    ).pack(pady=(25, 10))
+
+    jam_entry = ctk.CTkEntry(
+        popup,
+        placeholder_text="Masukkan jam",
+        width=220,
+        height=40,
+        corner_radius=10
+    )
+    jam_entry.pack(pady=8)
+
+    menit_entry = ctk.CTkEntry(
+        popup,
+        placeholder_text="Masukkan menit",
+        width=220,
+        height=40,
+        corner_radius=10
+    )
+    menit_entry.pack(pady=8)
+
+    def simpan_custom():
+        global selected_duration
+
+        try:
+            jam = int(jam_entry.get()) if jam_entry.get() else 0
+            menit = int(menit_entry.get()) if menit_entry.get() else 0
+
+            if jam == 0 and menit == 0:
+                add_log("Custom durasi tidak boleh kosong")
+                return
+
+            if menit >= 60:
+                add_log("Menit tidak boleh lebih dari 59")
+                return
+
+            selected_duration = jam + (menit / 60)
+
+            refresh_duration_buttons()
+            update_total()
+            add_log(f"Custom durasi dipilih: {jam} jam {menit} menit")
+
+            popup.destroy()
+
+        except ValueError:
+            add_log("Input custom durasi harus angka")
+
+    ctk.CTkButton(
+        popup,
+        text="Simpan",
+        command=simpan_custom,
+        fg_color=BLUE,
+        height=40,
+        corner_radius=10
+    ).pack(pady=15)
+
+
+def format_duration(duration):
+    if duration is None:
+        return "-"
+
+    total_minutes = int(duration * 60)
+    jam = total_minutes // 60
+    menit = total_minutes % 60
+
+    if menit == 0:
+        return f"{jam} Jam"
+
+    return f"{jam} Jam {menit} Menit"
 
 
 def update_total():
@@ -142,11 +232,12 @@ def update_total():
         return
 
     total = selected_duration * tarif_per_jam
+
     total_tarif_label.configure(
         text=f"Meja terpilih : {selected_table}\n"
-             f"Durasi       : {selected_duration} Jam\n"
+             f"Durasi       : {format_duration(selected_duration)}\n"
              f"Tarif/Jam    : Rp {tarif_per_jam:,}\n\n"
-             f"Total bayar  : Rp {total:,}".replace(",", ".")
+             f"Total bayar  : Rp {int(total):,}".replace(",", ".")
     )
 
 
@@ -260,13 +351,13 @@ def start_billing():
     billing_active_label.configure(
         text=f"Meja Aktif : {selected_table}\n"
              f"Status     : Berjalan\n"
-             f"Durasi     : {selected_duration} Jam\n"
+             f"Durasi     : {format_duration(selected_duration)}\n"
              f"Sisa Waktu : {get_sisa_waktu(selected_table)}\n"
              f"Lampu      : ON"
     )
 
     refresh_status_meja()
-    add_log(f"Billing dimulai untuk {selected_table} selama {selected_duration} jam")
+    add_log(f"Billing dimulai untuk {selected_table} selama {format_duration(selected_duration)}")
 
 
 def stop_billing():
@@ -304,8 +395,6 @@ def update_clock():
     clock_label.configure(text=datetime.now().strftime("%d/%m/%y\n%H:%M:%S"))
     app.after(1000, update_clock)
 
-
-# ================= SIDEBAR =================
 
 sidebar = ctk.CTkFrame(app, width=155, fg_color=WHITE, corner_radius=0)
 sidebar.pack(side="left", fill="y")
@@ -349,9 +438,6 @@ billing_menu = ctk.CTkButton(
     font=("Segoe UI", 10, "bold")
 )
 billing_menu.pack(fill="x", padx=18, pady=5)
-
-
-# ================= MAIN =================
 
 main = ctk.CTkFrame(app, fg_color="#f5f7fb", corner_radius=0)
 main.pack(side="left", fill="both", expand=True, padx=28, pady=28)
@@ -454,8 +540,6 @@ def card(parent, title, value, color):
 
     return lbl
 
-
-# ================= DASHBOARD =================
 
 dashboard_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 dashboard_frame.pack(fill="both", expand=True)
@@ -575,9 +659,6 @@ log_box = ctk.CTkTextbox(
 )
 log_box.pack(fill="both", expand=True, padx=18, pady=(0, 18))
 
-
-# ================= BILLING =================
-
 billing_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 
 hero(billing_frame, "BILLING CONTROL CENTER")
@@ -637,10 +718,15 @@ labels = ["1 Jam", "2 Jam", "3 Jam", "CUSTOM"]
 values = [1, 2, 3, None]
 
 for i, label in enumerate(labels):
+    if label == "CUSTOM":
+        command = open_custom_duration
+    else:
+        command = lambda v=values[i]: select_duration(v)
+
     btn = ctk.CTkButton(
         durasi_grid,
         text=label,
-        command=lambda v=values[i]: select_duration(v if v is not None else 1),
+        command=command,
         width=180,
         height=58,
         fg_color=GRAY,
