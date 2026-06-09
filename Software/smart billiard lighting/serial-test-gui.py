@@ -22,9 +22,14 @@ GRAY = "#f7f7f7"
 BORDER = "#e5e7eb"
 
 ser = None
+
 selected_table = None
 selected_duration = None
 selected_status_table = None
+
+current_mode = "AUTO"
+manual_lamp_state = "OFF"
+
 tarif_per_jam = 30000
 end_time = None
 
@@ -42,6 +47,7 @@ def add_log(text):
 
 def send_command(cmd):
     global ser
+
     try:
         if ser is None or not ser.is_open:
             add_log("Arduino belum terhubung")
@@ -60,6 +66,7 @@ def send_command(cmd):
 
 def connect_arduino():
     global ser
+
     try:
         ser = serial.Serial(
             port="COM6",
@@ -67,9 +74,11 @@ def connect_arduino():
             timeout=1,
             write_timeout=1
         )
+
         arduino_status.configure(text="Arduino\nConnected", text_color=GREEN)
         connect_btn.configure(text="ARDUINO CONNECTED", fg_color=GREEN)
         add_log("Arduino terhubung melalui COM6")
+
     except Exception as e:
         ser = None
         add_log(f"Gagal konek COM6: {e}")
@@ -108,21 +117,40 @@ def update_mode_status(mode):
 
 
 def set_mode_auto():
+    global current_mode
+
+    current_mode = "AUTO"
     update_mode_status("AUTO")
+
+    if selected_status_table in active_sessions:
+        update_lamp_status("ON")
+    else:
+        update_lamp_status("OFF")
+
     send_command("AUTO")
 
 
 def set_mode_manual():
+    global current_mode
+
+    current_mode = "MANUAL"
     update_mode_status("MANUAL")
+    update_lamp_status(manual_lamp_state)
     send_command("MANUAL")
 
 
 def lamp_on():
+    global manual_lamp_state
+
+    manual_lamp_state = "ON"
     update_lamp_status("ON")
     send_command("ON")
 
 
 def lamp_off():
+    global manual_lamp_state
+
+    manual_lamp_state = "OFF"
     update_lamp_status("OFF")
     send_command("OFF")
 
@@ -153,6 +181,7 @@ def refresh_duration_buttons():
 
 def select_table(table):
     global selected_table
+
     selected_table = table
     refresh_table_buttons()
     update_total()
@@ -161,6 +190,7 @@ def select_table(table):
 
 def select_duration(hour):
     global selected_duration
+
     selected_duration = hour
     refresh_duration_buttons()
     update_total()
@@ -169,68 +199,161 @@ def select_duration(hour):
 
 def open_custom_duration():
     popup = ctk.CTkToplevel(app)
-    popup.title("Custom Durasi")
-    popup.geometry("320x250")
+    popup.title("Set Durasi")
+    popup.geometry("360x430")
     popup.configure(fg_color="#f5f7fb")
     popup.grab_set()
 
-    ctk.CTkLabel(
-        popup,
-        text="Custom Durasi",
-        font=("Segoe UI", 20, "bold"),
-        text_color=TEXT
-    ).pack(pady=(25, 10))
+    jam_var = ctk.IntVar(value=1)
+    menit_var = ctk.IntVar(value=0)
 
-    jam_entry = ctk.CTkEntry(
-        popup,
-        placeholder_text="Masukkan jam",
-        width=220,
-        height=40,
-        corner_radius=10
-    )
-    jam_entry.pack(pady=8)
+    def format_angka(n):
+        return f"{n:02d}"
 
-    menit_entry = ctk.CTkEntry(
-        popup,
-        placeholder_text="Masukkan menit",
-        width=220,
-        height=40,
-        corner_radius=10
-    )
-    menit_entry.pack(pady=8)
+    def update_display():
+        jam_prev.configure(text=format_angka((jam_var.get() - 1) % 24))
+        jam_now.configure(text=format_angka(jam_var.get()))
+        jam_next.configure(text=format_angka((jam_var.get() + 1) % 24))
 
-    def simpan_custom():
+        menit_prev.configure(text=format_angka((menit_var.get() - 1) % 60))
+        menit_now.configure(text=format_angka(menit_var.get()))
+        menit_next.configure(text=format_angka((menit_var.get() + 1) % 60))
+
+    def jam_up(event=None):
+        jam_var.set((jam_var.get() + 1) % 24)
+        update_display()
+
+    def jam_down(event=None):
+        jam_var.set((jam_var.get() - 1) % 24)
+        update_display()
+
+    def menit_up(event=None):
+        menit_var.set((menit_var.get() + 1) % 60)
+        update_display()
+
+    def menit_down(event=None):
+        menit_var.set((menit_var.get() - 1) % 60)
+        update_display()
+
+    def simpan():
         global selected_duration
 
-        try:
-            jam = int(jam_entry.get()) if jam_entry.get() else 0
-            menit = int(menit_entry.get()) if menit_entry.get() else 0
+        jam = jam_var.get()
+        menit = menit_var.get()
 
-            if jam == 0 and menit == 0:
-                add_log("Custom durasi tidak boleh kosong")
-                return
+        if jam == 0 and menit == 0:
+            add_log("Durasi tidak boleh 00:00")
+            return
 
-            if menit >= 60:
-                add_log("Menit tidak boleh lebih dari 59")
-                return
+        selected_duration = jam + (menit / 60)
 
-            selected_duration = jam + (menit / 60)
-            refresh_duration_buttons()
-            update_total()
-            add_log(f"Custom durasi dipilih: {jam} jam {menit} menit")
-            popup.destroy()
+        refresh_duration_buttons()
+        update_total()
+        add_log(f"Custom durasi dipilih: {jam} jam {menit} menit")
+        popup.destroy()
 
-        except ValueError:
-            add_log("Input custom durasi harus angka")
+    card_popup = ctk.CTkFrame(
+        popup,
+        fg_color=WHITE,
+        corner_radius=22
+    )
+    card_popup.pack(fill="both", expand=True, padx=22, pady=22)
+
+    ctk.CTkLabel(
+        card_popup,
+        text="SET DURASI",
+        text_color=TEXT,
+        font=("Segoe UI", 13, "bold")
+    ).pack(pady=(28, 12))
+
+    picker = ctk.CTkFrame(card_popup, fg_color="transparent")
+    picker.pack(pady=8)
+
+    jam_col = ctk.CTkFrame(picker, fg_color="transparent")
+    jam_col.grid(row=0, column=0, padx=(0, 8))
+
+    colon_col = ctk.CTkFrame(picker, fg_color="transparent")
+    colon_col.grid(row=0, column=1, padx=4)
+
+    menit_col = ctk.CTkFrame(picker, fg_color="transparent")
+    menit_col.grid(row=0, column=2, padx=(8, 0))
+
+    jam_prev = ctk.CTkLabel(
+        jam_col,
+        text="00",
+        text_color="#cfd6d1",
+        font=("Segoe UI", 42, "bold")
+    )
+    jam_prev.pack()
+
+    jam_now = ctk.CTkLabel(
+        jam_col,
+        text="01",
+        text_color="#95a297",
+        font=("Segoe UI", 54, "bold")
+    )
+    jam_now.pack()
+
+    jam_next = ctk.CTkLabel(
+        jam_col,
+        text="02",
+        text_color="#cfd6d1",
+        font=("Segoe UI", 42, "bold")
+    )
+    jam_next.pack()
+
+    ctk.CTkLabel(
+        colon_col,
+        text=":\n:\n:",
+        text_color="#95a297",
+        font=("Segoe UI", 48, "bold")
+    ).pack(pady=(10, 0))
+
+    menit_prev = ctk.CTkLabel(
+        menit_col,
+        text="59",
+        text_color="#cfd6d1",
+        font=("Segoe UI", 42, "bold")
+    )
+    menit_prev.pack()
+
+    menit_now = ctk.CTkLabel(
+        menit_col,
+        text="00",
+        text_color="#95a297",
+        font=("Segoe UI", 54, "bold")
+    )
+    menit_now.pack()
+
+    menit_next = ctk.CTkLabel(
+        menit_col,
+        text="01",
+        text_color="#cfd6d1",
+        font=("Segoe UI", 42, "bold")
+    )
+    menit_next.pack()
+
+    for widget in [jam_prev, jam_now, jam_next]:
+        widget.bind("<Button-1>", jam_up)
+        widget.bind("<MouseWheel>", lambda e: jam_up() if e.delta > 0 else jam_down())
+
+    for widget in [menit_prev, menit_now, menit_next]:
+        widget.bind("<Button-1>", menit_up)
+        widget.bind("<MouseWheel>", lambda e: menit_up() if e.delta > 0 else menit_down())
 
     ctk.CTkButton(
-        popup,
+        card_popup,
         text="Simpan",
-        command=simpan_custom,
+        command=simpan,
+        width=210,
+        height=48,
         fg_color=BLUE,
-        height=40,
-        corner_radius=10
-    ).pack(pady=15)
+        hover_color=BLUE,
+        corner_radius=14,
+        font=("Segoe UI", 13, "bold")
+    ).pack(pady=(18, 24))
+
+    update_display()
 
 
 def format_duration(duration):
@@ -286,15 +409,18 @@ def get_sisa_waktu(table):
 
 def select_status_meja(table):
     global selected_status_table
+
     selected_status_table = table
     table_value.configure(text=table)
 
     if table in active_sessions:
         timer_value.configure(text=get_sisa_waktu(table))
-        update_lamp_status("ON")
+        if current_mode == "AUTO":
+            update_lamp_status("ON")
     else:
         timer_value.configure(text="00:00:00")
-        update_lamp_status("OFF")
+        if current_mode == "AUTO":
+            update_lamp_status("OFF")
 
     refresh_status_meja()
 
@@ -330,16 +456,25 @@ def update_status_timer():
 
     for table in expired_tables:
         del active_sessions[table]
-        add_log(f"{table} selesai, lampu dimatikan otomatis")
-        send_command("OFF")
+        add_log(f"{table} selesai")
+
+        if current_mode == "AUTO":
+            send_command("OFF")
+            if selected_status_table == table:
+                update_lamp_status("OFF")
 
     if selected_status_table:
         if selected_status_table in active_sessions:
             timer_value.configure(text=get_sisa_waktu(selected_status_table))
-            update_lamp_status("ON")
+
+            if current_mode == "AUTO":
+                update_lamp_status("ON")
+
         else:
             timer_value.configure(text="00:00:00")
-            update_lamp_status("OFF")
+
+            if current_mode == "AUTO":
+                update_lamp_status("OFF")
 
     refresh_status_meja()
     app.after(1000, update_status_timer)
@@ -368,7 +503,9 @@ def start_billing():
 
     table_value.configure(text=selected_table)
     timer_value.configure(text=get_sisa_waktu(selected_table))
-    update_lamp_status("ON")
+
+    if current_mode == "AUTO":
+        update_lamp_status("ON")
 
     send_command("ON")
 
@@ -389,7 +526,10 @@ def stop_billing():
         del active_sessions[selected_status_table]
 
     timer_value.configure(text="00:00:00")
-    update_lamp_status("OFF")
+
+    if current_mode == "AUTO":
+        update_lamp_status("OFF")
+
     send_command("OFF")
 
     billing_active_label.configure(
@@ -416,12 +556,26 @@ def update_clock():
     app.after(1000, update_clock)
 
 
+# ================= SIDEBAR =================
+
 sidebar = ctk.CTkFrame(app, width=155, fg_color=WHITE, corner_radius=0)
 sidebar.pack(side="left", fill="y")
 sidebar.pack_propagate(False)
 
-ctk.CTkLabel(sidebar, text="SBL", text_color=BLUE, font=("Segoe UI", 34, "bold")).pack(pady=(35, 0))
-ctk.CTkLabel(sidebar, text="Smart Billiard\nLighting", text_color=TEXT, font=("Segoe UI", 10, "bold")).pack(pady=(0, 35))
+ctk.CTkLabel(
+    sidebar,
+    text="SBL",
+    text_color=BLUE,
+    font=("Segoe UI", 34, "bold")
+).pack(pady=(35, 0))
+
+ctk.CTkLabel(
+    sidebar,
+    text="Smart Billiard\nLighting",
+    text_color=TEXT,
+    font=("Segoe UI", 10, "bold"),
+    justify="center"
+).pack(pady=(0, 35))
 
 dashboard_menu = ctk.CTkButton(
     sidebar,
@@ -447,13 +601,21 @@ billing_menu = ctk.CTkButton(
 )
 billing_menu.pack(fill="x", padx=18, pady=5)
 
+
+# ================= MAIN =================
+
 main = ctk.CTkFrame(app, fg_color="#f5f7fb", corner_radius=0)
 main.pack(side="left", fill="both", expand=True, padx=28, pady=28)
 
 header = ctk.CTkFrame(main, fg_color="transparent")
 header.pack(fill="x")
 
-ctk.CTkLabel(header, text="Smart Billiard Lighting", text_color=TEXT, font=("Segoe UI", 30, "bold")).pack(side="left")
+ctk.CTkLabel(
+    header,
+    text="Smart Billiard Lighting",
+    text_color=TEXT,
+    font=("Segoe UI", 30, "bold")
+).pack(side="left")
 
 status_area = ctk.CTkFrame(header, fg_color="transparent")
 status_area.pack(side="right")
@@ -525,13 +687,25 @@ def card(parent, title, value, color):
     inner = ctk.CTkFrame(box, fg_color="transparent")
     inner.pack(side="left", fill="both", expand=True)
 
-    ctk.CTkLabel(inner, text=title, text_color=MUTED, font=("Segoe UI", 9, "bold")).pack(anchor="w", pady=(14, 0))
+    ctk.CTkLabel(
+        inner,
+        text=title,
+        text_color=MUTED,
+        font=("Segoe UI", 9, "bold")
+    ).pack(anchor="w", pady=(14, 0))
 
-    lbl = ctk.CTkLabel(inner, text=value, text_color=color, font=("Segoe UI", 25, "bold"))
+    lbl = ctk.CTkLabel(
+        inner,
+        text=value,
+        text_color=color,
+        font=("Segoe UI", 25, "bold")
+    )
     lbl.pack(anchor="w")
 
     return lbl, bar
 
+
+# ================= DASHBOARD =================
 
 dashboard_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 dashboard_frame.pack(fill="both", expand=True)
@@ -555,7 +729,12 @@ left_dash.pack(side="left", fill="both", expand=True, padx=(0, 8), pady=8)
 right_dash = ctk.CTkFrame(dash_body, fg_color="transparent")
 right_dash.pack(side="right", fill="both", expand=True, padx=(8, 0), pady=8)
 
-ctk.CTkLabel(left_dash, text="Panel Kontrol", text_color=TEXT, font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=28, pady=(22, 12))
+ctk.CTkLabel(
+    left_dash,
+    text="Panel Kontrol",
+    text_color=TEXT,
+    font=("Segoe UI", 14, "bold")
+).pack(anchor="w", padx=28, pady=(22, 12))
 
 
 def control_button(text, color, command):
@@ -593,7 +772,12 @@ control_button("LAMPU OFF", RED, lamp_off)
 status_meja = ctk.CTkFrame(right_dash, fg_color=WHITE, corner_radius=18)
 status_meja.pack(fill="x", pady=(0, 10))
 
-ctk.CTkLabel(status_meja, text="Status Meja", text_color=TEXT, font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=18, pady=(14, 8))
+ctk.CTkLabel(
+    status_meja,
+    text="Status Meja",
+    text_color=TEXT,
+    font=("Segoe UI", 14, "bold")
+).pack(anchor="w", padx=18, pady=(14, 8))
 
 grid = ctk.CTkFrame(status_meja, fg_color="transparent")
 grid.pack(fill="x", padx=18, pady=(0, 16))
@@ -622,7 +806,12 @@ for i in range(4):
 log_frame = ctk.CTkFrame(right_dash, fg_color=WHITE, corner_radius=18)
 log_frame.pack(fill="both", expand=True)
 
-ctk.CTkLabel(log_frame, text="Log Sistem", text_color=TEXT, font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=18, pady=(14, 8))
+ctk.CTkLabel(
+    log_frame,
+    text="Log Sistem",
+    text_color=TEXT,
+    font=("Segoe UI", 14, "bold")
+).pack(anchor="w", padx=18, pady=(14, 8))
 
 log_box = ctk.CTkTextbox(
     log_frame,
@@ -634,6 +823,9 @@ log_box = ctk.CTkTextbox(
     border_color="#d7d7d7"
 )
 log_box.pack(fill="both", expand=True, padx=18, pady=(0, 18))
+
+
+# ================= BILLING =================
 
 billing_frame = ctk.CTkFrame(main, fg_color="#f5f7fb")
 
@@ -652,7 +844,14 @@ right_bill.pack(side="right", fill="both", expand=True, padx=(12, 0))
 def panel(parent, title):
     box = ctk.CTkFrame(parent, fg_color=WHITE, corner_radius=18)
     box.pack(fill="both", expand=True, pady=10)
-    ctk.CTkLabel(box, text=title, text_color=TEXT, font=("Segoe UI", 14, "bold")).pack(anchor="w", padx=18, pady=(14, 8))
+
+    ctk.CTkLabel(
+        box,
+        text=title,
+        text_color=TEXT,
+        font=("Segoe UI", 14, "bold")
+    ).pack(anchor="w", padx=18, pady=(14, 8))
+
     return box
 
 
@@ -721,9 +920,29 @@ total_tarif_label.pack(fill="x", padx=24, pady=(0, 10))
 btns = ctk.CTkFrame(total_panel, fg_color="transparent")
 btns.pack(fill="x", padx=20, pady=8)
 
-ctk.CTkButton(btns, text="Mulai", command=start_billing, fg_color=GREEN, height=32).pack(side="left", expand=True, fill="x", padx=5)
-ctk.CTkButton(btns, text="Tambah", command=add_time, fg_color=BLUE, height=32).pack(side="left", expand=True, fill="x", padx=5)
-ctk.CTkButton(btns, text="Selesai", command=stop_billing, fg_color=RED, height=32).pack(side="left", expand=True, fill="x", padx=5)
+ctk.CTkButton(
+    btns,
+    text="Mulai",
+    command=start_billing,
+    fg_color=GREEN,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
+
+ctk.CTkButton(
+    btns,
+    text="Tambah",
+    command=add_time,
+    fg_color=BLUE,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
+
+ctk.CTkButton(
+    btns,
+    text="Selesai",
+    command=stop_billing,
+    fg_color=RED,
+    height=32
+).pack(side="left", expand=True, fill="x", padx=5)
 
 billing_active_label = ctk.CTkLabel(
     aktif_panel,
