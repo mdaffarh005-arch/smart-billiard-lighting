@@ -20,7 +20,7 @@ void setup()
 {
     GPIO_Init();
 
-    UART_Init(115200);
+    UART_Init(9600);
 
     Timer_Init();
 
