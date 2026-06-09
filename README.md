@@ -139,4 +139,3 @@ Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawa
 * **Course: Microcontroller AVR**
 * **Project Type: Embedded System & IoT Project**
 * **Repository: Smart Billiard Lighting & Billing System**
-
