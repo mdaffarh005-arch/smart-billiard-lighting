@@ -99,14 +99,6 @@ Main Workflow
 
 ## 📊 To Do List
 
-### 🟡 On Progress
-
-- [ ] Timer system implementation
-- [ ] Relay control integration
-- [ ] Hardware assembly
-- [ ] PCB design
-
-
 ### 🟢 Complete
 
 * **[x]Repository setup**
@@ -117,6 +109,10 @@ Main Workflow
 * **[x]Team collaboration setup**
 * **[x]Dashboard development**
 * **[x]Automatic billing calculation**
+* * **[x]Relay control integration**
+* **[x]Hardware assembly**
+* **[x]PCB design**
+
   
 🌍 SDGs Impact
 
