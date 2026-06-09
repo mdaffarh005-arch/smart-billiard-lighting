@@ -1,6 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
 
+#include <Arduino.h>
+
 #ifdef __cplusplus
 extern "C" {
 #endif
