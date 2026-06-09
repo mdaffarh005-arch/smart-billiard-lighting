@@ -109,7 +109,7 @@ Main Workflow
 * **[x]Team collaboration setup**
 * **[x]Dashboard development**
 * **[x]Automatic billing calculation**
-* * **[x]Relay control integration**
+* **[x]Relay control integration**
 * **[x]Hardware assembly**
 * **[x]PCB design**
 
