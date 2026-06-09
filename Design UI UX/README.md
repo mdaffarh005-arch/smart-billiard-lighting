@@ -7,7 +7,7 @@ Folder ini berisi desain antarmuka (UI/UX) aplikasi Smart Billiard Lighting.
 - File Figma
 - Mockup Desktop
 - Asset Icon
-- Screenshot UI
+- Screenshot Progress
 
 ## Halaman
 
