@@ -1,141 +1,56 @@
 # 🎱 Smart Billiard Lighting & Billing System
 
-> Integrasi Billing, Timer, dan Kontrol Lampu dalam Satu Sistem
+![GitHub Header Banner](https://capsule-render.vercel.app/render?type=waving&color=auto&height=220&section=header&text=Smart%20Billiard%20Lighting%20%26%20Billing%20System&fontSize=32&animation=fadeIn&theme=dark)
 
-Sistem berbasis ATmega2560 yang mengintegrasikan kontrol lampu meja biliar, timer permainan, dan perhitungan biaya sewa dalam satu dashboard kasir. Proyek ini bertujuan meningkatkan efisiensi operasional, mengurangi human error, dan meminimalkan pemborosan energi listrik.
-
----
-
-📖 Overview
-
-Smart Billiard Lighting & Billing System merupakan solusi otomatisasi untuk membantu pengelolaan arena biliar. Sistem menghubungkan aplikasi kasir dengan mikrokontroler ATmega2560 melalui komunikasi serial UART sehingga status penggunaan meja dapat dipantau dan dikendalikan secara real-time.
-
-Selain mengontrol lampu meja secara otomatis, sistem juga mampu mencatat durasi bermain, menghitung biaya sewa berdasarkan tarif per menit, serta menyimpan riwayat transaksi.
+<p align="center">
+  <img src="https://img.shields.io/badge/Status-Complete-green?style=for-the-badge&logo=github" alt="Status">
+  <img src="https://img.shields.io/badge/Microcontroller-ATmega2560-blue?style=for-the-badge&logo=arduino" alt="MCU">
+  <img src="https://img.shields.io/badge/Embedded_System-IoT_Project-orange?style=for-the-badge" alt="Project">
+</p>
 
 ---
 
+### 📖 Overview
+**Smart Billiard Lighting & Billing System** merupakan solusi otomatisasi berbasis mikrokontroler **ATmega2560** untuk membantu pengelolaan arena biliar. Sistem ini menghubungkan aplikasi kasir dengan perangkat keras melalui komunikasi serial UART sehingga status penggunaan meja dapat dipantau dan dikendalikan secara *real-time*.
 
-🎯 Objectives
-* **Mengurangi pemborosan energi listrik pada meja biliar.**
-* **Mengotomatisasi pencatatan durasi bermain pelanggan.**
-* **Menghitung biaya sewa secara otomatis berdasarkan waktu penggunaan.**
-* **Mengurangi human error dalam operasional arena biliar.**
-* **Meningkatkan efisiensi pengelolaan meja dan transaksi kasir.**
+Selain mengontrol sakelar lampu meja secara otomatis melalui modul relay, sistem ini juga mampu mencatat durasi bermain pelanggan, menghitung biaya sewa berdasarkan tarif per menit fleksibel, serta meminimalkan risiko celah kebocoran keuangan (*revenue leakage*).
 
-✨ Features
+---
 
-⏱ Real-Time Timer
+### 🎯 Objectives
+* 💡 **Mengurangi pemborosan energi listrik** pada meja biliar lewat otomasi relay.
+* ⏱️ **Mengotomatisasi pencatatan durasi bermain** pelanggan secara presisi.
+* 🧮 **Menghitung biaya sewa otomatis** berdasarkan akumulasi waktu penggunaan.
+* 🛡️ **Mengurangi human error** dan kebocoran pendapatan dalam operasional bisnis.
+* 📈 **Meningkatkan efisiensi** tata kelola meja dan rekapitulasi transaksi kasir.
 
-Menampilkan durasi bermain setiap meja secara real-time.
+---
 
-💰 Flexible Pricing
+### ✨ Features
 
-Harga per jam dapat diatur sesuai kebutuhan operasional.
+* **⏱️ Real-Time Timer:** Menampilkan durasi bermain setiap meja secara *real-time*.
+* **💰 Flexible Pricing:** Harga sewa per jam dapat diatur fleksibel sesuai kebutuhan operasional.
+* **🧮 Automatic Billing:** Akumulasi total biaya dihitung otomatis berdasarkan durasi penggunaan meja.
+* **💡 Smart Lighting Control:** Lampu meja menyala dan mati secara otomatis mengikuti status billing meja.
+* **🎛️ Manual & Automatic Mode:** Mendukung pengoperasian sakelar secara otomatis maupun kontrol manual.
+* **📊 Monitoring Dashboard:** Menampilkan status meja, durasi bermain, dan total biaya dalam satu tampilan GUI.
+* **💲 Income Automatic Monitoring:** Menghitung otomatis total akumulasi pendapatan yang diperoleh kasir.
 
-🧮 Automatic Billing
+---
 
-Total biaya dihitung otomatis berdasarkan durasi penggunaan meja.
-
-💡 Smart Lighting Control
-
-Lampu meja menyala dan mati mengikuti status penggunaan meja.
-
-🎛 Manual & Automatic Mode
-
-Mendukung pengoperasian secara otomatis maupun manual.
-
-📊 Monitoring Dashboard
-
-Menampilkan status meja, durasi bermain, dan total biaya dalam satu tampilan.
-
-💲Income Automatic Monitoring
-
-Dapat menghitung otomatis total pendapatan yang didapatkan.
+### 🗺️ System Architecture & Workflow
 
 ```mermaid
 flowchart TD
-    A[Kasir Dashboard]
-    B[Serial Communication]
-    C[ATmega2560]
-    D[Timer]
-    E[Billing]
-    F[Relay]
-    G[Durasi Bermain]
-    H[Total Biaya]
-    I[Lampu Meja]
-
-    A --> B
-    B --> C
-    C --> D
-    C --> E
-    C --> F
-    D --> G
-    E --> H
-    F --> I
-```
-
-Main Workflow
-* **Kasir memilih meja yang akan digunakan.**
-* **Kasir mengatur tarif per menit.**
-* **Sistem mengaktifkan timer dan lampu meja.**
-* **Durasi bermain dihitung secara real-time.**
-* **Sistem menghitung biaya berdasarkan durasi bermain.**
-* **Saat sesi berakhir, lampu dimatikan otomatis.**
-* **Riwayat transaksi disimpan pada sistem.**
-
-## 👥 Tim Pengembang & Kontributor
-
-| No | Nama Lengkap | NRP | Peran Utama & Fokus Jobdesk | GitHub Profile | Status Kontribusi |
-| :---: | :--- | :---: | :--- | :--- | :---: |
-| **1** | **Muh. Daffa Rizaldy H.** | 2124600004 | **Project Manager**<br>• Manajemen linimasa & koordinasi integrasi sistem | [@mdaffarh005-arch](https://github.com/mdaffarh005-arch) | 🟢 Done Commit |
-| **2** | **Moh Harudin Ali** | 2124600008 | **Software Engineer (Firmware)**<br>• Pengodean logika kontrol pemutusan relay | [@Harudin31](https://github.com/Harudin31) | 🟢 Done Commit |
-| **3** | **Achmad Rafie Febriansyah** | 2124600011 | **3D Designer**<br>• Pemodelan objek 3D casing box komponen | [@rafiefebriansyahh](https://github.com/rafiefebriansyahh) | 🟢 Done Commit |
-| **4** | **Imam Syaifudin** | 2124600015 | **Hardware Engineer**<br>• Perancangan skematik dan desain PCB | [@imam603](https://github.com/imam603) | 🟢 Done Commit |
-| **5** | **Muhammad Abdi Muhyi Umam** | 2124600023 | **UI/UX Designer**<br>• Perancangan interface dashboard web kasir | [@abdiemuhyi](https://github.com/abdiemuhyi) | 🟢 Done Commit |
-| **6** | **Gandhi Husain Albana** | 2124600026 | **Software Engineer (Web & DB)**<br>• Pengembangan database & komunikasi serial | [@gandhialbana-art](https://github.com/gandhialbana-art) | 🟢 Done Commit |
-
----
-
-
-## 📊 To Do List
-
-### 🟢 Complete
-
-* **[x]Repository setup**
-* **[x]Git workflow configuration**
-* **[x]Initial system design**
-* **[x]Initial system planning**
-* **[x]Mind map & root cause analysis**
-* **[x]Team collaboration setup**
-* **[x]Dashboard development**
-* **[x]Automatic billing calculation**
-* **[x]Relay control integration**
-* **[x]Hardware assembly**
-* **[x]PCB design**
-
-  
-🌍 SDGs Impact
-
-SDG 7 – Affordable and Clean Energy
-
-Meningkatkan efisiensi penggunaan energi melalui sistem kontrol lampu otomatis.
-
-SDG 12 – Responsible Consumption and Production
-
-Mendorong penggunaan sumber daya listrik yang lebih efisien dan bertanggung jawab.
-
-🛠 Development Tools
-
-* **ATmega2560**
-* **Wokwi Simulator**
-* **VS Code**
-* **GitHub**
-* **EasyEDA**
-* **Figma**
-* **Python Tkinter**
-
-📚 Course Information
-
-* **Course: Microcontroller AVR**
-* **Project Type: Embedded System & IoT Project**
-* **Repository: Smart Billiard Lighting & Billing System**
+    A[Kasir Dashboard] --> B[Serial Communication]
+    B --> C[ATmega2560]
+    C --> D[Timer]
+    C --> E[Billing]
+    C --> F[Relay]
+    D --> G[Durasi Bermain]
+    E --> H[Total Biaya]
+    F --> I[Lampu Meja]
+    
+    style C fill:#1f6feb,stroke:#fff,stroke-width:2px,color:#fff
+    style A fill:#238636,stroke:#fff,stroke-width:1px,color:#fff
+    style I fill:#d29922,stroke:#fff,stroke-width:1px,color:#black
