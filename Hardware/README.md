@@ -101,4 +101,4 @@ Visualisasi 3D digunakan untuk:
 - Fritzing
 
 ## Designer
-Imam Syaifudin
+Imam Syaifudin/2124600015
